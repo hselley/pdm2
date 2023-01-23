@@ -1,0 +1,75 @@
+# Control de Flujo
+En Swift existen las sentecnias de control de flujo básicas.
+
+* if-else
+* switch
+* for
+* for in
+* while
+* do-while
+
+
+## If-else
+```swift
+var timeYouWakeUp = 6
+if timeYouWakeUp == 6 {
+    print("Cook yourself a big breakfast!")
+} else {
+    print("Go out for breakfast")
+}
+```
+
+## Swicth 
+```swift
+var timeYouWakeUp = 6
+switch timeYouWakeUp {
+case 6:
+    print("Cook yourself a big breakfast!")
+default:
+    print("Go out for breakfast")
+}
+```
+
+No existe una regla universal para cuando utilizar if-else o switch,
+ocasionalmente se elige alguno de los dos para escribir código que 
+sea más facil de leer y en otras ocasiones una de las estructuras se 
+acomoda mejor a la necesidad.
+
+Vayamos a un ejemplo. Diagmos que cada año usted recibe un bono, 
+y de acuerdo al bono decidirá el destino al que realizará un viaje.
+
+* Si recibe un bono de $10000 o más, viajará a Paris y Londres. 
+* Si el bono está entre $5000 y $9999, viajará a Tokio.
+* Si el bono está entre $1000 y $4999, viajará a Bangkok.
+* Si el bono es menor a $1000, se quedará en casa.
+
+Esta es la versión con `if-else`.
+```swift 
+var bonus = 5000
+if bonus >= 10000 {
+    print("I will travel to Paris and London!")
+} else if bonus >= 5000 {
+    print("I will travel to Tokyo")
+} else if bonus >= 1000 {
+    print("I will travel to Bangkok")
+} else {
+    print("Just stay home")
+}
+```
+
+Esta es la versión con `switch-case`.
+```swift
+var bonus = 5000
+switch bonus {
+case 10000...:
+    print("I will travel to Paris and London!")
+case 5000...9999:
+    print("I will travel to Tokyo")
+case 1000...4999:
+    print("I will travel to Bangkok")
+default:
+    print("Just stay home")
+}
+```
+
+###### [Anterior](variables.html) | [Inicio](index.html) | [Siguiente]()

@@ -43,5 +43,144 @@ var π: Double = 3.14159
 var 🍎🍎: String = "Apples"
 ```
 
+## Tipos de datos
+Los tipos de datos son una parte muy importante de cualquier lenguaje
+de programación.
 
-###### [Anterior](intro.html) | [Inicio](index.html) | [Siguiente](.html) 
+### Enteros
+Se utiliza para representar números sin parte fraccionaria. En Swift 
+se pueden usar enteros con signo o sin signo de 8, 16, 32 y 64 bits.
+Se debe utilizar la palabra clave `Int` al declarar una variable.
+
+| Tipo | Tamaño | Rango |
+|:-:|:-:|:-:|
+| Int8  | 8 bits  | [-128, 128] |
+| Int16 | 16 bits | [-2^15^, 2^15^-1] |
+| Int32 | 32 bits | [-2^31^, 2^31^-1] |
+| Int64 | 16 bits | [-2^63^, 2^63^-1] |
+| UInt32 | Depende la plataforma | [0, 2^32^] |
+| UInt64 | Depende la plataforma | [0, 2^64^] |
+
+#### Ejemplo
+```swift
+// Swift program to demonstrate integer datatype
+
+// Creating signed integer data types
+var digit1: Int = 10
+
+// Display the number
+print("Signed integer data type is", digit1)
+
+// Creating unsigned integer data type
+var digit2: UInt = 23
+
+// Display the number
+print("Unsigned integer data type is", digit2)
+```
+
+### String
+Cadena de caracteres, se declara con la palabra clave `String`.
+
+```swift
+// Swift program to demonstrate string datatype
+
+// Creating string data type
+var inputdata1: String = "GeeksforGeeks"
+
+// Display the value
+print("String data type is", inputdata1)
+
+// Creating string data type
+var inputdata2: String
+inputdata2 = "GFG"
+
+// Display the value
+print("String data type is", inputdata2)
+```
+
+### Float
+Para representar números no enteros utilizando 32 bits de memoria.
+El tipo de dato permite números de hasta 6 decimales, el rango de
+números que es posible almacenar son [1.2E^-38^, 3.45E^+38^]. Se 
+utiliza la palabra clave `Float` en la declaración.
+
+```swift
+// Swift program to demonstrate float datatype
+
+// Creating float data type
+var inputdata1: Float = 3.0545
+
+// Display the value
+print("Float data type is", inputdata1)
+
+// Creating double data type
+var inputdata2: Float = 0.978623
+
+// Display the value
+print("Float data type is", inputdata2)
+```
+
+### Double
+Números no enteros de doble precisión, se emplean 64 bits de memoria.
+Se pueden representar números de hasta 15 decimales. El rango de números
+posibles es [2.3E^-308^, 1.7E^+308^]. Se utiliza la palabra clave 
+`Double` en la declaración.
+
+```swift
+// Swift program to demonstrate double datatype
+
+// Creating double data type
+var inputdata1: Double = 23.098545
+
+// Display the value
+print("Double data type is", inputdata1)
+
+// Creating double data type
+var inputdata2: Double = 1.9786677532
+
+// Display the value
+print("Double data type is", inputdata2)
+```
+
+### Booleano
+Valores lógicos `true` y `false`. Se utiliza la palabra clave `Bool` en
+la declaración.
+
+```swift
+// Swift program to demonstrate boolean datatype
+
+// Creating boolean data type
+var inputdata1: Bool = true
+
+// Display the value
+print("Boolean data type is", inputdata1)
+
+// Creating boolean data type
+var inputdata2: Bool = false
+
+// Display the value
+print("Boolean data type is", inputdata2)
+```
+
+#### Character
+Se utiliza para almacenar un solo caracter. Se utiliza la palabra clave 
+`Character` en la declaración.
+
+```swift
+// Swift program to demonstrate character datatype
+
+// Creating character data type
+var inputdata1: Character = "G"
+
+// Display the value
+print("Character data type is", inputdata1)
+
+// Creating character data type
+var inputdata2: Character = "E"
+
+// Display the value
+print("Character data type is", inputdata2)
+```
+
+
+###### [Anterior](intro.html) | [Inicio](index.html) | [Siguiente](controlFlujo.html)

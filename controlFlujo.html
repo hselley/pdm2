@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.18">
-<title>Variables y Propiedades</title>
+<title>Control de Flujo</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -441,272 +441,123 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_variables_y_propiedades">Variables y Propiedades</h2>
+<h2 id="_control_de_flujo">Control de Flujo</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>En Swift existen las sentecnias de control de flujo básicas.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>if-else</p>
+</li>
+<li>
+<p>switch</p>
+</li>
+<li>
+<p>for</p>
+</li>
+<li>
+<p>for in</p>
+</li>
+<li>
+<p>while</p>
+</li>
+<li>
+<p>do-while</p>
+</li>
+</ul>
+</div>
 <div class="sect2">
-<h3 id="_declaración_de_una_variable">Declaración de una variable</h3>
-<div class="paragraph">
-<p>Para declarar una variable se debe utilizar la palabra clave ´var´
-seguida del nombre de la variable, su tipo de dato y valor. El valor
-inicial es opcional.</p>
-</div>
+<h3 id="_if_else">If-else</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">var num:Int = 10</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Las variables pueden cambiar de valor en cualquier momento, ya sea por
-el flujo del programa o por una asignación directa.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">num = 20    // La variable ahora vale 20</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Si se desea una variable que no cambie su valor, es decir una constante,
-se debe utilizar la palabra clave <code>let</code> seguido de su nombre, tipo de
-dato y valor. El valor inicial (y permanente) no es opcional.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">let num:Int = 10    // Este valor no puede cambiar</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Es posible delcarar una variable y asignarle un valor sin indicar el
-tipo de dato. Si no se especifica un tipo de dato, Swift inferirá y
-asignará el tipo de manera automática.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">let ten = 10 // num is an Int
-let pi = 3.14 // pi is a Double
-let floatPi: Float = 3.14 // floatPi is a Float</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Los nombres de las variables y constantes no están limitados a
-caracteres alfanuméricos, pueden contener la mayoría de caracteres
-<em>Unicode</em> aunque existen algunas excepciones. Los nombres no pueden
-contener espacios, símbolos matemáticos, flechas, símbolos <em>Unicode</em>
-privados y no pueden comenzar con un número.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">var π: Double = 3.14159
-var 🍎🍎: String = "Apples"</code></pre>
+<pre class="highlight"><code class="language-swift" data-lang="swift">var timeYouWakeUp = 6
+if timeYouWakeUp == 6 {
+    print("Cook yourself a big breakfast!")
+} else {
+    print("Go out for breakfast")
+}</code></pre>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_tipos_de_datos">Tipos de datos</h3>
-<div class="paragraph">
-<p>Los tipos de datos son una parte muy importante de cualquier lenguaje de
-programación.</p>
-</div>
-<div class="sect3">
-<h4 id="_enteros">Enteros</h4>
-<div class="paragraph">
-<p>Se utiliza para representar números sin parte fraccionaria. En Swift se
-pueden usar enteros con signo o sin signo de 8, 16, 32 y 64 bits. Se
-debe utilizar la palabra clave <code>Int</code> al declarar una variable.</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-center valign-top">Tipo</th>
-<th class="tableblock halign-center valign-top"> Tamaño</th>
-<th class="tableblock halign-center valign-top">Rango</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">Int8</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">8 bits</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"> [-128, 128]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">Int16</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">16 bits</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"> [-2<sup>15</sup>, 2<sup>15</sup>-1]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">Int32</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">32 bits</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"> [-2<sup>31</sup>, 2<sup>31</sup>-1]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">Int64</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">16 bits</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"> [-2<sup>63</sup>, 2<sup>63</sup>-1]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">UInt32</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">Depende la plataforma</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"> [0, 2<sup>32</sup>]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">UInt64</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">Depende la plataforma</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"> [0, 2<sup>64</sup>]</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect4">
-<h5 id="_ejemplo">Ejemplo</h5>
+<h3 id="_swicth">Swicth</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">// Swift program to demonstrate integer datatype
-
-// Creating signed integer data types
-var digit1: Int = 10
-
-// Display the number
-print("Signed integer data type is", digit1)
-
-// Creating unsigned integer data type
-var digit2: UInt = 23
-
-// Display the number
-print("Unsigned integer data type is", digit2)</code></pre>
+<pre class="highlight"><code class="language-swift" data-lang="swift">var timeYouWakeUp = 6
+switch timeYouWakeUp {
+case 6:
+    print("Cook yourself a big breakfast!")
+default:
+    print("Go out for breakfast")
+}</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>No existe una regla universal para cuando utilizar if-else o switch,
+ocasionalmente se elige alguno de los dos para escribir código que sea
+más facil de leer y en otras ocasiones una de las estructuras se acomoda
+mejor a la necesidad.</p>
+</div>
+<div class="paragraph">
+<p>Vayamos a un ejemplo. Diagmos que cada año usted recibe un bono, y de
+acuerdo al bono decidirá el destino al que realizará un viaje.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Si recibe un bono de $10000 o más, viajará a Paris y Londres.</p>
+</li>
+<li>
+<p>Si el bono está entre $5000 y $9999, viajará a Tokio.</p>
+</li>
+<li>
+<p>Si el bono está entre $1000 y $4999, viajará a Bangkok.</p>
+</li>
+<li>
+<p>Si el bono es menor a $1000, se quedará en casa.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Esta es la versión con <code>if-else</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">var bonus = 5000
+if bonus &gt;= 10000 {
+    print("I will travel to Paris and London!")
+} else if bonus &gt;= 5000 {
+    print("I will travel to Tokyo")
+} else if bonus &gt;= 1000 {
+    print("I will travel to Bangkok")
+} else {
+    print("Just stay home")
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Esta es la versión con <code>switch-case</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">var bonus = 5000
+switch bonus {
+case 10000...:
+    print("I will travel to Paris and London!")
+case 5000...9999:
+    print("I will travel to Tokyo")
+case 1000...4999:
+    print("I will travel to Bangkok")
+default:
+    print("Just stay home")
+}</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_string">String</h4>
-<div class="paragraph">
-<p>Cadena de caracteres, se declara con la palabra clave <code>String</code>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">// Swift program to demonstrate string datatype
+<h4 id="_anterior_inicio_siguiente"><a href="variables.html">Anterior</a> | <a href="index.html">Inicio</a> | <a href="">Siguiente</a></h4>
 
-// Creating string data type
-var inputdata1: String = "GeeksforGeeks"
-
-// Display the value
-print("String data type is", inputdata1)
-
-// Creating string data type
-var inputdata2: String
-inputdata2 = "GFG"
-
-// Display the value
-print("String data type is", inputdata2)</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_float">Float</h4>
-<div class="paragraph">
-<p>Para representar números no enteros utilizando 32 bits de memoria. El
-tipo de dato permite números de hasta 6 decimales, el rango de números
-que es posible almacenar son [1.2E<sup>-38</sup>, 3.45E<sup>+38</sup>]. Se utiliza la
-palabra clave <code>Float</code> en la declaración.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">// Swift program to demonstrate float datatype
-
-// Creating float data type
-var inputdata1: Float = 3.0545
-
-// Display the value
-print("Float data type is", inputdata1)
-
-// Creating double data type
-var inputdata2: Float = 0.978623
-
-// Display the value
-print("Float data type is", inputdata2)</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_double">Double</h4>
-<div class="paragraph">
-<p>Números no enteros de doble precisión, se emplean 64 bits de memoria. Se
-pueden representar números de hasta 15 decimales. El rango de números
-posibles es [2.3E<sup>-308</sup>, 1.7E<sup>+308</sup>]. Se utiliza la palabra clave
-<code>Double</code> en la declaración.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">// Swift program to demonstrate double datatype
-
-// Creating double data type
-var inputdata1: Double = 23.098545
-
-// Display the value
-print("Double data type is", inputdata1)
-
-// Creating double data type
-var inputdata2: Double = 1.9786677532
-
-// Display the value
-print("Double data type is", inputdata2)</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_booleano">Booleano</h4>
-<div class="paragraph">
-<p>Valores lógicos <code>true</code> y <code>false</code>. Se utiliza la palabra clave <code>Bool</code> en
-la declaración.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">// Swift program to demonstrate boolean datatype
-
-// Creating boolean data type
-var inputdata1: Bool = true
-
-// Display the value
-print("Boolean data type is", inputdata1)
-
-// Creating boolean data type
-var inputdata2: Bool = false
-
-// Display the value
-print("Boolean data type is", inputdata2)</code></pre>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_character">Character</h5>
-<div class="paragraph">
-<p>Se utiliza para almacenar un solo caracter. Se utiliza la palabra clave
-<code>Character</code> en la declaración.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">// Swift program to demonstrate character datatype
-
-// Creating character data type
-var inputdata1: Character = "G"
-
-// Display the value
-print("Character data type is", inputdata1)
-
-// Creating character data type
-var inputdata2: Character = "E"
-
-// Display the value
-print("Character data type is", inputdata2)</code></pre>
-</div>
-</div>
-<div class="sect5">
-<h6 id="_anterior_inicio_siguiente"><a href="intro.html">Anterior</a> | <a href="index.html">Inicio</a> | <a href="controlFlujo.html">Siguiente</a></h6>
-
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -714,7 +565,7 @@ print("Character data type is", inputdata2)</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-01-23 15:59:28 -0600
+Last updated 2023-01-23 15:59:20 -0600
 </div>
 </div>
 </body>
