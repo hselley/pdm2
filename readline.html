@@ -5,8 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.18">
-<meta name="author" content="En Swift existen las sentecnias de control de flujo básicas.">
-<title>Control de Flujo</title>
+<title>Ingreso de datos desde la terminal</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -439,138 +438,74 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article">
 <div id="header">
-<h1>Control de Flujo</h1>
-<div class="details">
-<span id="author" class="author">En Swift existen las sentecnias de control de flujo básicas.</span><br>
-</div>
 </div>
 <div id="content">
-<div id="preamble">
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>if-else</p>
-</li>
-<li>
-<p>switch</p>
-</li>
-<li>
-<p>for</p>
-</li>
-<li>
-<p>for in</p>
-</li>
-<li>
-<p>while</p>
-</li>
-<li>
-<p>do-while</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
 <div class="sect1">
-<h2 id="_if_else">If-else</h2>
+<h2 id="_ingreso_de_datos_desde_la_terminal">Ingreso de datos desde la terminal</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Swift tiene la instrucción <code>readLine()</code> que permite solicitar al usuario
+una entrada desde el teclado y almacenarla en una constante o variable
+<em>String Opcional</em>.</p>
+</div>
+<div class="paragraph">
+<p>Para leer una entrada y guardarla en una constante <em>x</em>, se debe
+<em>desenvolver</em> la entrada dado que se traba de un <em>String Opcional</em>. Por
+lo tanto, el código queda de la siguiente forma:</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">var timeYouWakeUp = 6
-if timeYouWakeUp == 6 {
-    print("Cook yourself a big breakfast!")
-} else {
-    print("Go out for breakfast")
-}</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_swicth">Swicth</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">var timeYouWakeUp = 6
-switch timeYouWakeUp {
-case 6:
-    print("Cook yourself a big breakfast!")
-default:
-    print("Go out for breakfast")
+<pre class="highlight"><code class="language-swift" data-lang="swift">if let x = readLine() {
+    print("La entrada es: \(x)")
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>No existe una regla universal para cuando utilizar if-else o switch,
-ocasionalmente se elige alguno de los dos para escribir código que
-sea más facil de leer y en otras ocasiones una de las estructuras se
-acomoda mejor a la necesidad.</p>
-</div>
-<div class="paragraph">
-<p>Vayamos a un ejemplo. Diagmos que cada año usted recibe un bono,
-y de acuerdo al bono decidirá el destino al que realizará un viaje.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Si recibe un bono de $10000 o más, viajará a Paris y Londres.</p>
-</li>
-<li>
-<p>Si el bono está entre $5000 y $9999, viajará a Tokio.</p>
-</li>
-<li>
-<p>Si el bono está entre $1000 y $4999, viajará a Bangkok.</p>
-</li>
-<li>
-<p>Si el bono es menor a $1000, se quedará en casa.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Esta es la versión con <code>if-else</code>.</p>
+<p>Si lo que se ingresa a través de readLine debe ser tratado como un
+número entero, se debe hacer la conversión con el método <em>Int</em> pero es
+necesario desenvolver el <em>Int Opcional</em>. El código queda de la siguiente
+forma:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">var bonus = 5000
-if bonus &gt;= 10000 {
-    print("I will travel to Paris and London!")
-} else if bonus &gt;= 5000 {
-    print("I will travel to Tokyo")
-} else if bonus &gt;= 1000 {
-    print("I will travel to Bangkok")
-} else {
-    print("Just stay home")
+<pre class="highlight"><code class="language-swift" data-lang="swift">if let entrada = readLine() {
+  if let numero = Int(entrada) {
+      print(numero)
+  }
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Esta es la versión con <code>switch-case</code>.</p>
+<p>Si deseara convertir la entrada a otro tipo de dato numérico, bastaría
+con usar de la misma forma los métodos <em>Float</em> o <em>Double</em>.</p>
+</div>
+<div class="paragraph">
+<p>Si desea recibir dos números desde <code>readLine</code>, primero se leen las
+entradas y luego se deben desenvolver los <em>String Opcionales</em> y los <em>Int
+Opcionales</em> utilizando un solo <code>if</code> simultáneo. El código queda de la
+siguiente forma:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">var bonus = 5000
-switch bonus {
-case 10000...:
-    print("I will travel to Paris and London!")
-case 5000...9999:
-    print("I will travel to Tokyo")
-case 1000...4999:
-    print("I will travel to Bangkok")
-default:
-    print("Just stay home")
-}</code></pre>
-</div>
-</div>
-<div class="sect5">
-<h6 id="_anteriorvariables_html_inicioindex_html_siguiente">[Anterior](variables.html) | [Inicio](index.html) | [Siguiente]()</h6>
+<pre class="highlight"><code class="language-swift" data-lang="swift">// Se piden dos entradas:
+let entrada1 = readLine()
+let entrada2 = readLine()
 
+// Se desenvuelven simultáneamente:
+if let respuesta1 = entrada1,
+  let respuesta2 = entrada2,
+  let num1 = Int(respuesta1),
+  let num2 = Int(respuesta2) {
+    print("The sum of \(num1) and \(num2) is \(num1 + num2)")
+}</code></pre>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-01-23 15:47:50 -0600
+Last updated 2023-01-26 14:55:56 -0600
 </div>
 </div>
 </body>
