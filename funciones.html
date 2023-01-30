@@ -441,11 +441,217 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>Funciones</h1>
 </div>
 <div id="content">
+<div class="sect1">
+<h2 id="_sintáxis_para_declaración">Sintáxis para declaración</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Las funciones sirven para escribir código modular y reusable. La
+declaración de una función en swift se hace con la palabra clave <code>func</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">func ejemplo() {
+   let mensaje = "Hola mundo"
+   print(mensaje)
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Esta función llamada <code>ejemplo</code> tiene algunas instrucciones en su
+interior, no recibe argumentos ni devuelve algún resultado. Para ser
+invocada la función, se debe escribir su nombre y los paréntesis (aunque
+se encuentren vacios). Si no se incluyen los paréntesis el compilador
+señalará un error de sintáxis.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_funciones_que_reciben_argumentos">Funciones que reciben argumentos</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para que una función reciaba un argumento es necesario indicarlo dentro
+de los paréntesis al declarar la función. Se debe indicar el nombre del
+argumento y su tipo de dato.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">func numero(n:Int) {
+   print("El número recibido es \(n)")
+}
 
+numero(n:2)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Observe que al invocar a la función y enviarle un argumento, se debe
+hacer referencia a la constante que recibirá el valor. Estos se llaman
+parámetros etiquetados. Si omitiera el nombre de la constante que
+recibirá el valor (aún y cuando sea sólo un parámetro) el compilador
+indicará un error.</p>
+</div>
+<div class="paragraph">
+<p>Si se desean más parámetros de entrada hay que listarlos en la
+declaración de la función.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">func numeros(n1:Int, n2: Double) {
+    print("Los números recibidos son \(n1) y \(n2)")
+}
+
+numeros(n1:5, n2:6)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Observe que los tipos de datos de los argumentos pueden ser diferentes
+entre sí.</p>
+</div>
+<div class="paragraph">
+<p>Considere además que cuando se envían varios parámetros a la función, se
+deben listar en el orden en el que fueron declarados.</p>
+</div>
+<div class="paragraph">
+<p>Además considere que en swift los argumentos de entrada son siempre
+constantes, por lo que si desea cambiar el valor del argumento se debe
+declarar una variable del mismo tipo y asignarle el valor dentro de la
+misma función. Esa variable puede tener incluso el mismo nombre si así
+lo desea.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_funciones_que_devuelven_resultado">Funciones que devuelven resultado</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para que las funciones devuelvan un resultado es necesario indicarlo en
+la declaración. Se debe indicar el tipo de dato que será devuelto y
+dentro de la función se debe utilizar la palabra clave <code>return</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">func suma(n1:Int, n2:Int) -&gt; Int {
+    return n1+n2
+}
+
+let s = suma(n1:5, n2:6)
+print(s)</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_argumentos_no_etiquetados">Argumentos no etiquetados</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Swift permite que los argumentos no tengan una etiqueta si así lo desea,
+aunque no se recomienda. Para ello, se debe agregar el caracter especial
+<code>_</code> previo al nombre de la etiqueta en la declaración de la función.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">func suma(_ n1:Int, _ n2:Int) -&gt; Int {
+    return n1+n2
+}
+
+let s = suma(5, 6)
+print(s)</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_argumentos_personalizados">Argumentos personalizados</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Es posible cambiar las etiquetas de los argumentos de las funciones. Se
+puede personalizar la etiqueta e indicar la constante en la cual se
+recibirá el valor.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">func saludo(_ persona: String, en dia: String) -&gt; String {
+    return "Hola \(persona), hoy es \(dia)."
+}
+let x = saludo("Juan", en: "Miercoles")
+print(x)</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_funciones_anidadas">Funciones anidadas</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Se pueden anidar funciones, esto es, definir una función dentro de otra
+función.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">func returnFifteen() -&gt; Int {
+    var y = 10
+    func add() {
+        y += 5
+    }
+    add()
+    return y
+}
+let y = returnFifteen()
+print(y)</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_funciones_devueltas_por_otra_función">Funciones devueltas por otra función</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Las funciones son tipo primera clase, esto significa que una función
+puede devolver otra función.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">func makeIncrementer() -&gt; ((Int) -&gt; Int) {
+    func addOne(number: Int) -&gt; Int {
+        return 1 + number
+    }
+    return addOne
+}
+var increment = makeIncrementer()
+increment(7)</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_funciones_como_argumento">Funciones como argumento</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Las funciones pueden tener una función como su argumento de entrada.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">func hasAnyMatches(list: [Int], condition: (Int) -&gt; Bool) -&gt; Bool {
+    for item in list {
+        if condition(item) {
+            return true
+        }
+    }
+    return false
+}
+func lessThanTen(number: Int) -&gt; Bool {
+    return number &lt; 10
+}
+var numbers = [20, 19, 7, 12]
+let b = hasAnyMatches(list: numbers, condition: lessThanTen)
+print(b)</code></pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-01-26 15:02:20 -0600
+Last updated 2023-01-30 15:57:47 -0600
 </div>
 </div>
 </body>
