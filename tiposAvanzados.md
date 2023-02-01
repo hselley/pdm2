@@ -1,6 +1,6 @@
 # Tipos de datos avanzados
 
-## Arreglos
+## Diccionarios
 
 ```swift
 let interestingNumbers = [
