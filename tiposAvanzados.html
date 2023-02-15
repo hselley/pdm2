@@ -444,7 +444,526 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="_tipos_de_datos_avanzados">Tipos de datos avanzados</h2>
 <div class="sectionbody">
 <div class="sect2">
+<h3 id="_tuplas">Tuplas</h3>
+<div class="paragraph">
+<p>Una tupla es una lista de elementos separados por coma y entre
+paréntesis. Esta lista puede tener el nombre de los elementos y utilizar
+esos nombres para referirse al valor de algún elemento en particular.
+Los elementos en la tupla no tienen que ser del mismo tipo.</p>
+</div>
+<div class="paragraph">
+<p>Un elemento consiste de un identificador seguido inmediatamente del
+símbolo dos puntos <code>:</code>.</p>
+</div>
+<div class="paragraph">
+<p>Se puede utilizar una tupla como la devolución de una función de manera
+que pueda devolver valores de diferentes tipos.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">let tuple = ("one", 2, "three")
+
+// Values are read using index numbers starting at zero
+print(tuple.0) // one
+print(tuple.1) // 2
+print(tuple.2) // three</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Además, los valores de la tupla pueden ser nombrados cuando se declare
+la tupla.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">let namedTuple = (first: 1, middle: "dos", last: 3)
+
+// Values can be read with the named property
+print(namedTuple.first)  // 1
+print(namedTuple.middle) // dos
+
+// And still with the index number
+print(namedTuple.2)      // 3</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Los tuplas pueden ser nombrados cuando son utilizados como una variable
+e inclusive tener la capacidad de tener valores opcionales en su
+interior.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">var numbers: (optionalFirst: Int?, middle: String, last: Int)
+
+//Later On
+numbers = (nil, "dos", 3)
+
+if let first = numbers.optionalFirst {
+    print(first) // nil
+}
+print(numbers.middle) //"dos"
+print(numbers.last) //3</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_descomponiendo_una_tupla_en_variables_individuales">Descomponiendo una tupla en variables individuales</h4>
+<div class="paragraph">
+<p>Las tuplas pueden ser descompuestas en variables individuales mediante
+la siguiente sintaxis.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">let myTuple = (name: "Some Name", age: 26)
+let (first, second) = myTuple
+
+print(first) // "Some Name"
+print(second)  // 26</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>La sintaxis puede ser utilizada aún y cuando las propiedades de la tupla
+no hayan sido nombradas.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">let unnamedTuple = ("uno", "dos")
+let (one, two) = unnamedTuple
+
+print(one) // "uno"
+print(two) // "dos"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Es posible ignorar algunas propiedades específicas utilizando el símbolo
+<code>_</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">let longTuple = ("ichi", "ni", "san")
+let (_, _, third) = longTuple
+
+print(third) // "san"</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_tuplas_como_resultado_de_una_función">Tuplas como resultado de una función</h4>
+<div class="paragraph">
+<p>Una función puede devolver una tupla como resultado, esto mediante la
+siguiente sintaxis.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">func tupleReturner() -&gt; (Int, String) {
+    return (3, "Hello")
+}
+
+let tuple = tupleReturner()
+
+print(tuple.0) // 3
+print(tuple.1) // "Hello"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Si se asignan nombres a los parámetros, estos pueden ser utilizados como
+un valor a devolver.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">func tupleReturner() -&gt; (anInteger: Int, aString: String) {
+    return (3, "Hello")
+}
+
+let tuple = tupleReturner()
+
+print(tuple.anInteger) // 3
+print(tuple.aString) // "Hello"</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_alias_para_una_tupla">Alias para una tupla.</h4>
+<div class="paragraph">
+<p>Ocasionalmente puede utilizar más de una vez una tupla, lo cual puede
+volverse confuso sobre todo si la tupla no es simple.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">import Foundation
+
+// Define a circle tuple by its center point and radius
+let unitCircle: (center: (x: CGFloat, y: CGFloat), radius: CGFloat) = ((0.0, 0.0), 1.0)
+
+func doubleRadius(circle: (center: (x: CGFloat, y: CGFloat), radius: CGFloat)) -&gt; (center: (x: CGFloat, y: CGFloat), radius: CGFloat) {
+    return (circle.center, circle.radius * 2.0)
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Un tipo de dato <code>CGFloat</code> es una forma especializada de Float que
+permite almacenar datos de 32 ó 64 bits. Este tipo de dato es parte de
+Core Graphics y se encuentra en UIKit, Sprite Kit y otras bibliotecas de
+iOS.</p>
+</div>
+<div class="paragraph">
+<p>Si se utiliza más de una vez la tupla, conviene usar <code>typealias</code> para
+nombrar la tupla.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">// Define a circle tuple by its center point and radius
+typealias Circle = (center: (x: CGFloat, y: CGFloat), radius: CGFloat)
+let unitCircle: Circle = ((0.0, 0.0), 1)
+
+func doubleRadius(circle: Circle) -&gt; Circle {
+    // Aliased tuples also have access to value labels in the original tuple type.
+    return (circle.center, circle.radius * 2.0)
+}
+
+print(doubleRadius(circle: unitCircle))
+
+let newCircle: Circle = ((1,3), 5)
+print(doubleRadius(circle: newCircle))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Sin embargo, si utiliza esto frecuentemente quizá sea mejor que
+considere usar una estructura.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_intercambiar_valores_en_una_tupla">Intercambiar valores en una tupla</h4>
+<div class="paragraph">
+<p>Si se desea intercambiar dos o más valores en una tupla, se puede hacer
+sin utilizar variables temporales.</p>
+</div>
+<div class="paragraph">
+<p>Ejemplo con dos variables.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">var a = "Marty McFly"
+var b = "Emmett Brown"
+
+(a, b) = (b, a)
+
+print(a) // "Emmett Brown"
+print(b) // "Marty McFly"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Ejemplo con cuatro variables</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">var a = 0
+var b = 1
+var c = 2
+var d = 3
+
+(a, b, c, d) = (d, c, b, a)
+
+print(a, b, c, d) // 3, 2, 1, 0</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_tuplas_en_switch">Tuplas en switch</h4>
+<div class="paragraph">
+<p>Uso de tuplas mediante un switch</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-switch" data-lang="switch">let switchTuple = (firstCase: true, secondCase: false)
+
+switch switchTuple {
+    case (true, false):
+        // do something
+        print("TF")
+    case (true, true):
+        // do something
+        print("TT")
+    case (false, true):
+        // do something
+        print("FT")
+    case (false, false):
+        // do something
+        print("FF")
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_diccionarios">Diccionarios</h3>
+<div class="paragraph">
+<p>Los diccionarios son un conjunto no ordenado de llaves y valores. Los
+valores están relacionados a llaves únicas y deben ser del mismo tipo.</p>
+</div>
+<div class="paragraph">
+<p>Para inicializar un diccionario se puede usar la sintáxis completa:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">var books : Dictionary&lt;Int, String&gt; = Dictionary&lt;Int, String&gt;()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Adicionalmente hay formas más concisas de declarar un diccionario:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">var books = [Int: String]()
+// or
+var books: [Int: String] = [:]
+// or
+var books: [Int: String]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Es posible declarar un diccionario y asignarle valores iniciales,
+separados con coma. Los tipos de datos pueden ser inferidos por el valor
+asignado, por lo que es posible no indicar el tipo explícitamente.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">var books: [Int: String] = [1: "Book 1", 2: "Book 2"]
+//books = [2: "Book 2", 1: "Book 1"]
+
+var otherBooks = [3: "Book 3", 4: "Book 4"]
+//otherBooks = [3: "Book 3", 4: "Book 4"]</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_acceso_a_valores_del_diccionario">Acceso a valores del diccionario</h4>
+<div class="paragraph">
+<p>Un valor dentro del diccionario puede ser accesado mediante su llave
+correspondiente.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">var books: [Int: String] = [1: "Book 1", 2: "Book 2"]
+let bookName = books[1]
+//bookName = "Book 1"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Los valores del diccionario pueden ser iterados mediante la propiedad
+<code>values</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">for book in books.values {
+    print("Book Title: \(book)")
+}
+//output: Book Title: Book 2
+//output: Book Title: Book 1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De manera similar, las llaves pueden ser iteradas mediante la propiedad
+<code>keys</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">for bookNumber in books.keys {
+    print("Book number: \(bookNumber)")
+}
+// outputs:
+// Book number: 1
+// Book number: 2</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Ademas, se puede iterar el diccionario y utilizar una tupla si se
+necesita tanto la llave como el valor de cada elemento:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">for (bookTitle, bookNumber) in books {
+    print("\(bookTitle) -&gt; \(bookNumber)")
+}
+// output:
+// 2 -&gt; Book 2
+// 1 -&gt; Book 1
+// 3 -&gt; Book 3</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Observe que a diferencia de un arreglo, los diccionarios son conjuntos
+no ordenados. Por ello es posible no obtener en la iteración los
+elementos en el orden que fueron guardados en el diccionario.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">// Create a multilevel dictionary.
+var myDictionary: [String:[Int:String]] =
+    ["Toys":
+        [1:"Car",2:"Truck"],
+    "Interests":
+        [1:"Science",2:"Math"]
+    ]
+
+if let v = myDictionary["Toys"]?[2] {
+    print(v) // Outputs "Truck"
+}
+
+if let w = myDictionary["Interests"]?[1] {
+    print(w) // Outputs "Science"
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Considere que cuando se usan diccionarios es posible que una llave
+solicitada no exista en el diccionario. Por esa razón los diccionarios
+siempre devuelven opcionales. Debido a eso, en el ejemplo se tuvo que
+desenvolver el opcional devuelto por el diccionario.</p>
+</div>
+<div class="paragraph">
+<p>Si está seguro de que la llave existe en el diccionario y desea obtener
+el valor opcional sin hacer un desenvolvimiento, puede entonces forzar
+la devolución.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">print(myDictionary["Toys"]?[2]!)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_cambiar_valores_en_un_diccionario">Cambiar valores en un diccionario</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">var dict = ["name": "John", "surname": "Doe"]
+
+// Set the element with key: 'name' to 'Jane'
+dict["name"] = "Jane"
+
+print(dict)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_obtener_las_llaves_de_un_diccionario">Obtener las llaves de un diccionario</h4>
+<div class="paragraph">
+<p>Si desea obtener las llaves del diccionario, puede hacerlo con el
+operador <code>keys</code> y recibir el resultado como un arreglo. Esto es posible
+dado que las llaves tienen el mismo tipo de dato.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">var dict = ["name": "John", "surname": "Doe"]
+let allKeys = Array(dict.keys)
+print(allKeys)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_modificar_el_diccionario">Modificar el diccionario</h4>
+<div class="paragraph">
+<p>Si se desea cambiar un valor específico del diccionario, se puede hacer
+mediante su llave.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">var books = [Int: String]()
+//books = [:]
+
+books[5] = "Book 5"
+print(books)
+//books = [5: "Book 5"]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>El método updateValue cambia el valor inidicado en la posición de la
+llave y devuelve el valor previo.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">books.updateValue("Book 7", forKey: 5)
+//[5: "Book 7"]
+print(previousValue)
+print(books)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Para borrar valores y su respectiva llave se utiliza una sintáxis
+similar:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">books[5] = nil
+
+books[6] = "Deleting from Dictionaries"
+print(books)
+//books = [6: "Deleting from Dictionaries"]
+
+let removedBook = books.removeValue(forKey:6)
+print(removedBook)
+//removedValue = "Deleting from Dictionaries"
+print(books)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_fusionar_dos_diccionarios">Fusionar dos diccionarios</h4>
+<div class="paragraph">
+<p>Para fusionar dos diccionarios en uno solo, se puede hacer mediante el
+método <code>merge</code>. Lo que debe decidir es que ocurrirá con los valores de
+las llaves repetidas en ambos, si se que existen.</p>
+</div>
+<div class="paragraph">
+<p>Si desea conservar los valores del primer diccionario, se le debe
+indicar a <code>merge</code> como haga la fusión <code>{(current, _) in current}</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">var dictionary1:[String:Int] = ["Mohan":75, "Raghu":82, "John":79]
+
+var dictionary2:[String:Int] = ["Surya":91, "John":80, "Saranya":92]
+
+dictionary1.merge(dictionary2){(current, _) in current}
+
+print("dictionary1\n------------")
+for (key, value) in dictionary1 {
+    print("(\(key),\(value))")
+}
+
+print("\ndictionary2\n------------")
+for (key, value) in dictionary2 {
+    print("(\(key),\(value))")
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Y si se desea conservar los valores del segundo diccionario, se le
+indica a <code>merge</code> que haga <code>{(current, _) in current}</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">var dictionary1:[String:Int] = ["Mohan":75, "Raghu":82, "John":79]
+
+var dictionary2:[String:Int] = ["Surya":91, "John":80, "Saranya":92]
+
+dictionary1.merge(dictionary2){(_, new) in new}
+
+print("dictionary1\n------------")
+for (key, value) in dictionary1 {
+    print("(\(key),\(value))")
+}
+
+print("\ndictionary2\n------------")
+for (key, value) in dictionary2 {
+    print("(\(key),\(value))")
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_ejemplo_de_un_diccionario">Ejemplo de un diccionario</h4>
+<div class="paragraph">
+<p>Dado un diccionario que tiene almacenados arreglos de números
+diferenciados por su llave, encuentre el valor mayor de todos ellos.</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-swift" data-lang="swift">let interestingNumbers = [
@@ -453,6 +972,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
     "Square": [1, 4, 9, 16, 25],
 ]
 var largest = 0
+var key:String = ""
 for (_, numbers) in interestingNumbers {
     for number in numbers {
         if number &gt; largest {
@@ -466,11 +986,766 @@ print(largest)
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_conjuntos">Conjuntos</h3>
+<div class="paragraph">
+<p>Un conjunto es una colección de valores únicos no ordenados. Los valores
+deben ser del mismo tipo.</p>
+</div>
+<div class="paragraph">
+<p>La declaración de un conjunto es mediante la sintáxis:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">var colors = Set&lt;String&gt;()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Se puede declarar un conjunto conocido de valores mediante la sintáxis
+de arreglo.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">var favoriteColors: Set&lt;String&gt; = ["Red", "Blue", "Green", "Blue"]
+// {"Blue", "Green", "Red"}</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_operaciones_básicas_con_conjuntos">Operaciones básicas con conjuntos</h4>
+<div class="paragraph">
+<p>Crear un conjuto con elementos iniciales.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">// create a set of integer type
+var studentID : Set = [112, 114, 116, 118, 115]
+
+print("Student ID: \(studentID)")</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Añadir elementos a un conjunto, se utiliza el método <code>insert()</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">var numbers: Set = [21, 34, 54, 12]
+
+print("Initial Set: \(numbers)")
+
+// using insert method
+numbers.insert(32)
+
+print("Updated Set: \(numbers)")</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Eliminar elementos de un conjunto, se utiliza el método <code>remove()</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">var languages: Set = ["Swift", "Java", "Python"]
+
+print("Initial Set: \(languages)")
+
+// remove Java from a set
+let removedValue = languages.remove("Java")
+
+print("Set after remove(): \(languages)")
+print("Value removed: \(removedValue)")</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Para iterar un conjunto se puede utilizar el ciclo <code>for</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">let fruits: Set = ["Apple", "Peach", "Mango"]
+
+print("Fruits:")
+
+// for loop to access each fruits
+for fruit in fruits {
+  print(fruit)
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Métodos adicionales para el manejo de conjuntos.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Método</th>
+<th class="tableblock halign-left valign-top"> Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">removeFirst()</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Eliminar el primer elemento</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">removeAll()</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Eliminar todos los elementos</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sorted()</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ordena los elementos</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">forEach()</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Realiza una acción a cada elemento</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">contains()</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Busca el elemento indicado en el conjunto</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">randomElement()</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Devuelve un elemento (tipo opcional) aleatorio</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">firstIndex()</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Devuelve el índice del elemento dado</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">count()</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Devuelve la canitdad de elemento en el conjunto</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_operaciones_avanzadas_con_conjuntos">Operaciones avanzadas con conjuntos</h4>
+<div class="paragraph">
+<p><strong>Intersección</strong></p>
+</div>
+<div class="paragraph">
+<p>Se puede utilizar el método <code>intersection(_:)</code> para crear un nuevo
+conjunto que contenga todos los valores comúnes de dos conjuntos origen.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Ejemplo 1.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">let favoriteColors: Set = ["Red", "Blue", "Green"]
+let newColors: Set = ["Purple", "Orange", "Green"]
+let intersect = favoriteColors.intersection(newColors) // a AND b
+// intersect = {"Green"}
+
+print(intersect)</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Ejemplo 2.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">var A : Set = ["a", "c", "d"]
+var B : Set = ["c", "b", "e" ]
+var C : Set = ["b", "c", "d"]
+
+// compute intersection between A and B
+print("A n B =", A.intersection(B))
+
+
+// compute intersection between B and C
+print("B n C =", B.intersection(C))</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Ejemplo 3.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">// create a set that ranges from 1 to 4
+var total = Set(1...10)
+
+// compute intersection
+print(total.intersection([5,10,15]))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Unión</strong></p>
+</div>
+<div class="paragraph">
+<p>Para realizar la unión entre dos conjuntos se puede usar el método
+union(_:), el cual creará un conjunto nuevo con los valores de ambos
+conjuntos sin repeticiones. * Ejemplo 1.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">let favoriteColors: Set = ["Red", "Blue", "Green"]
+let newColors: Set = ["Purple", "Orange", "Green"]
+
+let allColors = favoriteColors.union(newColors)
+print(allColors)</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Ejemplo 2.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">var A : Set = ["a", "c", "d"]
+var B : Set = ["c", "b", "e" ]
+var C : Set = ["b", "c", "d"]
+
+// compute union between A and B and C
+let D = A.union(B).union(C)
+print(D)</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Ejemplo 3.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">// create a set that ranges from 1 to 15
+var total = Set(1...10)
+
+// compute union
+print(total.union(Set(5...15)))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Diferencia</strong></p>
+</div>
+<div class="paragraph">
+<p>La diferencia entre dos conjuntos es el conjunto formado por los
+elementos del primer conjunto y que no se encuentran en el segundo. Se
+debe usar el método <code>subtracting(_:)</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Ejemplo 1.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">let favoriteColors: Set = ["Red", "Blue", "Green"]
+let newColors: Set = ["Purple", "Orange", "Green"]
+
+let diffColors = favoriteColors.subtracting(newColors)
+print(diffColors)</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Ejemplo 2.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">var A : Set = ["a", "c", "d"]
+var B : Set = ["c", "b", "e" ]
+var C : Set = ["b", "c", "d"]
+
+// compute subtracting between A and B and C
+let D = A.subtracting(B).subtracting(C)
+print(D)</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Ejemplo 3.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">var total = Set(1...10)
+
+// compute subtracting
+print(total.subtracting(Set(5...15)))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Diferencia simétrica (Or exclusiva)</strong></p>
+</div>
+<div class="paragraph">
+<p>Para obtener un conjunto construido con los elementos que no existen en
+ambos conjuntos, se debe utilizar el método <code>symmetricDifference()</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Ejemplo 1.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">let favoriteColors: Set = ["Red", "Blue", "Green"]
+let newColors: Set = ["Purple", "Orange", "Green"]
+
+let xorColors = favoriteColors.symmetricDifference(newColors)
+print(xorColors)</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Ejemplo 2.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">var A : Set = ["a", "c", "d"]
+var B : Set = ["c", "b", "e" ]
+var C : Set = ["b", "c", "d"]
+
+// compute symmetric difference between A and B and C
+let D = A.symmetricDifference(B).symmetricDifference(C)
+print(D)</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Ejemplo 3.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">// create a set that ranges from 1 to 4
+var total = Set(1...10)
+
+// compute symmetric difference
+print(total.symmetricDifference(Set(5...15)))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Subconjunto de un conjunto</strong></p>
+</div>
+<div class="paragraph">
+<p>Para verificar si un conjunto es subconjuto de otro, se utiliza el
+método <code>isSubset()</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">// first set
+let setA: Set = [1, 2, 3, 5, 4]
+print("Set A: ",  setA)
+
+// second set
+let setB: Set = [1, 2]
+print("Set B: ",  setB)
+
+// check if setB is subset of setA or not
+print("Subset: ", setB.isSubset(of: setA))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Verificar si dos conjuntos son iguales</strong></p>
+</div>
+<div class="paragraph">
+<p>Para determinar si dos conjuntos son iguales, basta con utilizar el
+operador <code>==</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">let setA: Set = [1, 3, 5]
+let setB: Set = [3, 5, 1]
+
+if setA == setB {
+  print("Set A and Set B are equal")
+}
+else {
+  print("Set A and Set B are different")
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Crear un conjunto vacío</strong></p>
+</div>
+<div class="paragraph">
+<p>Para la creación de un conjunto vacío, basta con utilizar la sintáxis:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">var emptySet = Set&lt;Int&gt;()
+print("Set:", emptySet)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_estructuras">Estructuras</h4>
+<div class="paragraph">
+<p>Las estructuras se utilizn para almacenar variables de diferentes tipo
+de dato.</p>
+</div>
+<div class="paragraph">
+<p>Sintáxis de la definición de una estructura:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">struct StructureName {
+  // structure definition
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Un ejemplo de una estructura llamada <code>Person</code> que contiene dos variables
+<code>name</code> y <code>age</code>, de tipo <code>String</code> e <code>Int</code> respectivamente. Las variables,
+llamadas propiedades en el contexto de la estructura, tienen valores
+iniciales.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">struct Person {
+
+  var name = ""
+  var age = 0
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>La estrucutra es una plantilla de variables, para usarla se necesita
+crear una instancia. Esto se hace indicando el nombre de la estructura
+como un tipo de dato y el inicializador <code>()</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">struct Person {
+
+  var name = " "
+  var age = 0
+}
+
+// create instance of struct
+var person1 = Person()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Para tener acceso a los valores a las propiedades de la estructura para
+lectura o escritura se debe usar el operador <code>.</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">// define a structure
+struct Person {
+
+// define two properties
+ var name = ""
+ var age = 0
+}
+
+// create instance of Person
+var person1 = Person()
+
+// access properties and assign new values
+person1.age = 21
+person1.name = "Rick"
+
+print("Name: \(person1.name) and Age: \( person1.age) ")</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Es posible crear múltiples instancias de una estructura.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">// define a structure
+struct Student {
+
+// define a property
+var studentID = 0
+}
+
+// instance of Person
+var student1 = Student()
+
+// access properties and assign new values
+student1.studentID = 101
+
+print("Student ID: \(student1.studentID)")
+
+// another instance of Person
+var student2 = Student()
+
+// access properties and assign new values
+student2.studentID = 102
+
+print("Student ID: \(student2.studentID)")</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Se puede inicializar una estructura a nivel de miembro, es decir, cuando
+se define se puede además asignarle valores iniciales.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">struct Person {
+
+// properties with no default values
+var name: String
+var age: Int
+}
+
+// instance of Person with memberwise initializer
+var person1 = Person(name: "Kyle", age: 19)
+
+print("Name: \(person1.name) and Age: \( person1.age)")</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>En Swift es posible definir funciones dentro de una estructura. Una
+función dentro de una estructura se llama método.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">struct Car {
+
+  var gear = 0
+
+  // method inside struct
+  func applyBrake() {
+    print("Applying Hydraulic Brakes")
+  }
+}
+
+// create an instance
+var car1 = Car()
+
+car1.gear = 5
+
+print("Gear Number: \(car1.gear)")
+// access method
+car1.applyBrake()</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_enums_enumeraciones_básicas">Enums: Enumeraciones básicas</h3>
+<div class="paragraph">
+<p>Un <code>enum</code> define un conjunto de valores fijos y relacionados entre si.
+Por ejemplo, se crea un enum Season y con cuatro valores enum.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">enum Season {
+    case spring
+    case summer
+    case autumn
+    case winter
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Una sinátix equivalente más sintética es la siguiente:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">enum Season {
+  case spring, summer, autumn, winter
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Para crear variables tipo <code>enum</code>, donde dicha variable sólo podrá tomar
+los <code>valores enum</code> contenidos por la definición del <code>enum</code>
+correspondiente. Por ejemplo, se crea una variable enum llamada
+currentSeason que sólo puede tomar los valores enum
+<code>{spring, summer, autumn, winter}</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">var currentSeason: Season</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Un ejemplo completo de la definición de un <code>enum</code>, sus <code>valores enum</code>,
+la declaración de una variable y asignación de un valor enum.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">// define enum
+enum Season {
+
+  // define enum values
+  case spring, summer, autumn, winter
+}
+
+// create enum variable
+var currentSeason: Season
+
+// assign value to enum variable
+currentSeason = Season.summer
+
+print("Current Season:", currentSeason)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Se puede utilizar un switch para el manejo de los <code>enum</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">enum PizzaSize {
+  case small, medium, large
+}
+
+var size = PizzaSize.medium
+
+switch(size) {
+  case .small:
+    print("I ordered a small size pizza.")
+
+  case .medium:
+    print("I ordered a medium size pizza.")
+
+   case .large:
+     print("I ordered a large size pizza.");
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Observe que el los cases del switch no se hace una referencia al nombre
+del <code>enum</code> correspondiente, incluir el nombre es opcional. Esto ayuda a
+tener un código más limpio.</p>
+</div>
+<div class="paragraph">
+<p>Es posible iterar sobre los enum cases mediante el ciclo for, es
+necesario utilizar el método <code>allCases</code>. Además es necesario agregar el
+parámetro <code>CaseIterable</code> al momento de definir el enum.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">// conform Languages to caseIterable
+enum Season: CaseIterable {
+  case spring, summer, autumn, winter
+}
+
+// for loop to iterate over all cases
+for currentSeason in Season.allCases {
+  print(currentSeason)
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>En Swift es posible asignar valores específicos para cada <code>valor enum</code>,
+esto se llama valores <em>crudos</em>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">enum Size : Int {
+  case small = 10
+  case medium = 12
+  ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Por ejemplo, aquí los tamaños small, medium y large tiene asociado una
+medida numérica entera. Nótese que se debe añadir el método <code>rawValue</code>
+para tener acceso al valor crudo.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">enum Size : Int {
+  case small = 10
+  case medium = 12
+  case large = 14
+}
+
+// access raw value of python case
+var result = Size.small.rawValue
+print(result)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>En Swift se puede incluir información adicional a cada caso enum, por
+ejemplo, dado el enum Laptop:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">enum Laptop {
+
+  // associate value
+  case name(String)
+  ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>En este enum, el valor name tiene asociado un tipo String que puede ser
+asignado posteriormente.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">Laptop.name("Razer")</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>En este ejemplo se ha asociado el valor <code>Razer</code> al valor enum llamado
+<code>name</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">enum Laptop {
+
+  // associate string value
+  case name(String)
+
+  // associate integer value
+  case price (Int)
+}
+
+// pass string value to name
+var brand = Laptop.name("Razer")
+print(brand)
+
+// pass integer value to price
+var offer = Laptop.price(1599)
+print(offer)</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_referencias">Referencias</h4>
+<div class="paragraph">
+<p><a href="https://www.programiz.com/swift-programming/">Programación Swift</a></p>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-02-01 12:47:08 -0600
+Last updated 2023-02-15 14:48:35 -0600
 </div>
 </div>
 </body>
