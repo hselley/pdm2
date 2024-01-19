@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.18">
-<title>Variables y Propiedades</title>
+<meta name="generator" content="Asciidoctor 2.0.20">
+<title>Arreglos</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -208,13 +208,10 @@ table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
 .admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
 .admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
 .exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
-.exampleblock>.content>:first-child{margin-top:0}
-.exampleblock>.content>:last-child{margin-bottom:0}
 .sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
-.sidebarblock>:first-child{margin-top:0}
-.sidebarblock>:last-child{margin-bottom:0}
 .sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
-.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content>:first-child,.sidebarblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child,.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
 .literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
 @media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
 @media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
@@ -393,7 +390,7 @@ b.conum *{color:inherit!important}
 dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
 h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
 p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
-p,blockquote,dt,td.content,span.alt,summary{font-size:1.0625rem}
+p,blockquote,dt,td.content,td.hdlist1,span.alt,summary{font-size:1.0625rem}
 p{margin-bottom:1.25rem}
 .sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
 .exampleblock>.content{background:#fffef7;border-color:#e0e0dc;box-shadow:0 1px 4px #e0e0dc}
@@ -441,272 +438,337 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_variables_y_propiedades">Variables y Propiedades</h2>
+<h2 id="_arreglos">Arreglos</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Un arreglo es una colección de datos que comparten un contexto y tienen
+el mismo tipo de dato.</p>
+</div>
+<div class="paragraph">
+<p>Se pueden declarar y asignar valores directamente, no es necesario
+indicar el tipo de dato pero Swift le asignará uno automáticamente de
+acuerdo a los datos que se almacenan.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">let arreglo = [1, 3, 2, 5]
+print("Arreglo = \(arreglo)")</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Para indicar explícitamente el tipo de dato que se desea asignar a los
+datos que contedrá el arreglo, se debe indicar ese tipo de dato deseado
+al declararse y escribirse entre corchetes.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">let arreglo:[Int] = [1, 3, 2, 5]
+print("Arreglo = \(arreglo)")</code></pre>
+</div>
+</div>
 <div class="sect2">
-<h3 id="_declaración_de_una_variable">Declaración de una variable</h3>
+<h3 id="_arreglos_multidimensionales">Arreglos multidimensionales</h3>
 <div class="paragraph">
-<p>Para declarar una variable se debe utilizar la palabra clave ´var´
-seguida del nombre de la variable, su tipo de dato y valor. El valor
-inicial es opcional.</p>
+<p>Si se desea un arreglo de varias dimensiones, se puede crear
+directamente asignando los valores. Cada dimensión debe tener sus
+valores entre corchetes, y las dimensiones deben separarse con comas. En
+swift, no es necesario que tenga la misma cantidad de elementos por
+dimensión.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">var num:Int = 10</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Las variables pueden cambiar de valor en cualquier momento, ya sea por
-el flujo del programa o por una asignación directa.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">num = 20    // La variable ahora vale 20</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Si se desea una variable que no cambie su valor, es decir una constante,
-se debe utilizar la palabra clave <code>let</code> seguido de su nombre, tipo de
-dato y valor. El valor inicial (y permanente) no es opcional.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">let num:Int = 10    // Este valor no puede cambiar</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Es posible delcarar una variable y asignarle un valor sin indicar el
-tipo de dato. Si no se especifica un tipo de dato, Swift inferirá y
-asignará el tipo de manera automática.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">let ten = 10 // num is an Int
-let pi = 3.14 // pi is a Double
-let floatPi: Float = 3.14 // floatPi is a Float</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Los nombres de las variables y constantes no están limitados a
-caracteres alfanuméricos, pueden contener la mayoría de caracteres
-<em>Unicode</em> aunque existen algunas excepciones. Los nombres no pueden
-contener espacios, símbolos matemáticos, flechas, símbolos <em>Unicode</em>
-privados y no pueden comenzar con un número.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">var π: Double = 3.14159
-var 🍎🍎: String = "Apples"</code></pre>
+<pre class="highlight"><code class="language-swift" data-lang="swift">let arreglo = [
+    [2, 3, 5, 7, 11, 13],
+    [1, 1, 2, 3, 5, 8, 13, 21],
+    [1, 4, 9, 16, 25],
+]
+print("Arreglo = \(arreglo)")</code></pre>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_tipos_de_datos">Tipos de datos</h3>
+<h3 id="_acceso_y_modificación_de_datos">Acceso y modificación de datos</h3>
 <div class="paragraph">
-<p>Los tipos de datos son una parte muy importante de cualquier lenguaje de
-programación.</p>
+<p>Se puede tener acceso a los datos de un arreglo a través de los métodos
+heredados de la alase <code>Array</code> o mediante la sintaxis subscript.</p>
+</div>
+<div class="paragraph">
+<p>Para determinar el número de elementos del arreglo, use la propiedad
+<code>count</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">let arreglo1:[Int] = [1, 3, 2, 5]
+print("Arreglo 1 dimensión= \(arreglo1)")
+print("Numero de elementos: \(arreglo1.count)")</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Si el arreglo es multidimensional, la propiedad <code>count</code> mostrará la
+cantidad de elementos de la primer dimensión (la más exterior o
+inmediata).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">let arreglo2 = [
+    [2, 3, 5, 7, 11, 13],
+    [1, 1, 2, 3, 5, 8, 13, 21],
+    [1, 4, 9, 16, 25],
+]
+print("Arreglo 2 dimensiones = \(arreglo2)")
+print("Numero de elementos: \(arreglo2.count)")
+
+let arreglo3 = [
+[
+    [2, 3, 5, 7, 11, 13],
+    [1, 1, 2, 3, 5, 8, 13, 21],
+    [1, 4, 9, 16, 25],
+],
+[
+    [2, 3, 5, 7, 11, 13],
+    [1, 1, 2, 3, 5, 8, 13, 21],
+    [1, 4, 9, 16, 25],
+]
+]
+print("Arreglo 3 dimensiones = \(arreglo3)")
+print("Numero de elementos: \(arreglo3.count)")</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Se puede utilizar la propiedad booleana <code>isEmpty</code> para determinar si
+el arreglo esta vacio o no.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">var shoppingList = ["Eggs", "Milk"]
+print("The shopping list contains \(shoppingList.count) items.")
+if shoppingList.isEmpty {
+    print("The shopping list is empty.")
+} else {
+    print("The shopping list isn't empty.")
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Se pueden añadir elementos al final del arreglo con el método heredado
+<code>append</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">shoppingList.append("Flour")</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Además, se pueden agregar uno o más elementos compatibles al final del
+arreglo con el operador <code>+=</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">shoppingList += ["Baking Powder"]
+// shoppingList now contains 4 items
+
+shoppingList += ["Chocolate Spread", "Cheese", "Butter"]
+// shoppingList now contains 7 items</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Para obtener un valor contenido por el arreglo, se puede utilizar la
+sintáxis subscript para localizarlo. Considere que el conteo de
+elementos comienza en 0.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">var firstItem = shoppingList[0]
+// firstItem is equal to "Eggs"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Se puede utilizar la misma sintaxis para cambiar un valor específico en
+el arreglo.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">shoppingList[0] = "Six eggs"
+// the first item in the list is now equal to "Six eggs" rather than "Eggs"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>También se puede utilizar la sintáxis subscript para cambiar un rango de
+valores simultáneamente, incluso si el conjunto de valores de reemplazo
+tiene un tamaño diferente al rango que será reemplazado. El siguiente
+ejemplo reemplaza &#8220;Chocolate Spread&#8221;, &#8220;Cheese&#8221;, y &#8220;Butter&#8221; con
+&#8220;Bananas&#8221; y &#8220;Apples&#8221;:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">shoppingList[4...6] = ["Bananas", "Apples"]
+// shoppingList now contains 6 items</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Para insertar un elemento al arreglo en un índice específico, se puede
+usar el método <code>insert(_:at:)</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">shoppingList.insert("Maple Syrup", at: 0)
+// shoppingList now contains 7 items
+// "Maple Syrup" is now the first item in the list</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Esto agrega el elemento <code>"Maple Syrup"</code> al inicio del arreglo, en la
+posción 0.</p>
+</div>
+<div class="paragraph">
+<p>De manera similar, se puede eliminar un elemento con el método
+<code>remove(at:)</code>. Este método eliminar el elemento seleccionado por el
+índice y lo devuelve.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">let mapleSyrup = shoppingList.remove(at: 0)
+// the item that was at index 0 has just been removed
+// shoppingList now contains 6 items, and no Maple Syrup
+// the mapleSyrup constant is now equal to the removed "Maple Syrup" string</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Cualquier hueco que quede en el arreglo es rellenado desplazando los
+elementos posteriores. En el ejemplo, los elementos se desplazaron y
+ahora en la posición 0 se encuentra <code>"Six eggs"</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_iterando_un_arreglo">Iterando un arreglo</h3>
+<div class="paragraph">
+<p>Se puede iterar los valores de un arreglo con el ciclo <code>for-in</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">for item in shoppingList {
+    print(item)
+}
+// Six eggs
+// Milk
+// Flour
+// Baking Powder
+// Bananas</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Si necesita el índice de cada elemento así como su valor, utilice el
+método <code>enumerated()</code> para iterar sobre todo el arreglo. Para cada
+elemento del arreglo, el método <code>enumerated()</code> devuelve una tupla
+compuesta de un entero y el elemento. Se puede descomponer la tupla en
+constantes temporales o variables dentro del ciclo.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">for (index, value) in shoppingList.enumerated() {
+    print("Item \(index + 1): \(value)")
+}
+// Item 1: Six eggs
+// Item 2: Milk
+// Item 3: Flour
+// Item 4: Baking Powder
+// Item 5: Bananas</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">for (var indice, var valor) in arreglo1.enumerated() {
+    print("Item \(indice + 1): \(valor)")
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>## Crear un arreglo vacío Si se desea crear un arreglo vacío que
+posteriormente se llenará en el flujo del programa, se puede hacer en la
+declaración del mismo, sin especificar los valores.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">let x:[Int]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Si desea un arreglo de dos o más dimensiones, debe indicarlo en la
+declaración con la misma cantidad de pares de corchetes como de
+dimensiones que desea para el arreglo.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">let x:[[String]]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>## Crear un arreglo no vacío Si por otro lado, necesita crear un arreglo
+y rellenarlo con algún valor específico, puede hacerlo mediante la clase
+<code>Array</code> y los parámetros <code>repeating</code> y <code>count</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">Array(repeating: 3, count: 5)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Este código genera un arreglo con 5 elementos 3.</p>
+</div>
+<div class="paragraph">
+<p>Si se desea rellenar con números enteros aleatorios, se puede utilizar
+el método <code>random</code> de la clase <code>Int</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">Array(repeating: Int.random(in: 0..&lt;20), count: 5)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Esta instrucción genera un arreglo con un número aleatorio entre 0 y 20
+repetido 5 veces.</p>
+</div>
+<div class="paragraph">
+<p>El siguiente código crea un arreglo de tamaño 10 y lleno con ceros de
+tipo <code>Float</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">Array(repeating: Float(), count: 10)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Puede cambiar Float por algún otro tipo de dato numérico si así lo
+requiere. Si utiliza otro tipo de dato no numérico, el arreglo se
+llenará con el valor por defecto del tipo de dato que corresponda.</p>
+</div>
+<div class="paragraph">
+<p>Si requiere un arreglo de dos dimensiones o más, deberá anidar la
+instrucción anterior tantas veces como lo requiera.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">Array(repeating: Array(repeating: 3, count: 5), count: 4)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_referencias">Referencias</h3>
+<div class="paragraph">
+<p><a href="Swift%20Arrays%20official%20documentation"><a href="https://docs.swift.org/swift-book/LanguageGuide/CollectionTypes.html" class="bare">https://docs.swift.org/swift-book/LanguageGuide/CollectionTypes.html</a></a></p>
+</div>
+<div class="paragraph">
+<p><a href="Swift%20Operators"><a href="https://www.programiz.com/swift-programming/operators#other" class="bare">https://www.programiz.com/swift-programming/operators#other</a></a></p>
+</div>
+<div class="paragraph">
+<p><a href="Two-dimensional%20array%20in%20Swift"><a href="https://stackoverflow.com/questions/25127700/two-dimensional-array-in-swift" class="bare">https://stackoverflow.com/questions/25127700/two-dimensional-array-in-swift</a></a></p>
+</div>
+<div class="paragraph">
+<p><a href="How%20To%20Use%20A%202D%20Array%20in%20Swift"><a href="https://www.zerotoappstore.com/how-to-use-a-two-d-array.html" class="bare">https://www.zerotoappstore.com/how-to-use-a-two-d-array.html</a></a></p>
 </div>
 <div class="sect3">
-<h4 id="_enteros">Enteros</h4>
-<div class="paragraph">
-<p>Se utiliza para representar números sin parte fraccionaria. En Swift se
-pueden usar enteros con signo o sin signo de 8, 16, 32 y 64 bits. Se
-debe utilizar la palabra clave <code>Int</code> al declarar una variable.</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-center valign-top">Tipo</th>
-<th class="tableblock halign-center valign-top"> Tamaño</th>
-<th class="tableblock halign-center valign-top">Rango</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">Int8</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">8 bits</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"> [-128, 128]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">Int16</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">16 bits</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"> [-2<sup>15</sup>, 2<sup>15</sup>-1]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">Int32</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">32 bits</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"> [-2<sup>31</sup>, 2<sup>31</sup>-1]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">Int64</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">16 bits</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"> [-2<sup>63</sup>, 2<sup>63</sup>-1]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">UInt32</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">Depende la plataforma</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"> [0, 2<sup>32</sup>]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">UInt64</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">Depende la plataforma</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"> [0, 2<sup>64</sup>]</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect4">
-<h5 id="_ejemplo">Ejemplo</h5>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">// Swift program to demonstrate integer datatype
+<h4 id="_anterior_inicio_siguiente"><a href=".html">Anterior</a> | <a href="index.html">Inicio</a> | <a href=".html">Siguiente</a></h4>
 
-// Creating signed integer data types
-var digit1: Int = 10
-
-// Display the number
-print("Signed integer data type is", digit1)
-
-// Creating unsigned integer data type
-var digit2: UInt = 23
-
-// Display the number
-print("Unsigned integer data type is", digit2)</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_string">String</h4>
-<div class="paragraph">
-<p>Cadena de caracteres, se declara con la palabra clave <code>String</code>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">// Swift program to demonstrate string datatype
-
-// Creating string data type
-var inputdata1: String = "GeeksforGeeks"
-
-// Display the value
-print("String data type is", inputdata1)
-
-// Creating string data type
-var inputdata2: String
-inputdata2 = "GFG"
-
-// Display the value
-print("String data type is", inputdata2)</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_float">Float</h4>
-<div class="paragraph">
-<p>Para representar números no enteros utilizando 32 bits de memoria. El
-tipo de dato permite números de hasta 6 decimales, el rango de números
-que es posible almacenar son [1.2E<sup>-38</sup>, 3.45E<sup>+38</sup>]. Se utiliza la
-palabra clave <code>Float</code> en la declaración.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">// Swift program to demonstrate float datatype
-
-// Creating float data type
-var inputdata1: Float = 3.0545
-
-// Display the value
-print("Float data type is", inputdata1)
-
-// Creating double data type
-var inputdata2: Float = 0.978623
-
-// Display the value
-print("Float data type is", inputdata2)</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_double">Double</h4>
-<div class="paragraph">
-<p>Números no enteros de doble precisión, se emplean 64 bits de memoria. Se
-pueden representar números de hasta 15 decimales. El rango de números
-posibles es [2.3E<sup>-308</sup>, 1.7E<sup>+308</sup>]. Se utiliza la palabra clave
-<code>Double</code> en la declaración.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">// Swift program to demonstrate double datatype
-
-// Creating double data type
-var inputdata1: Double = 23.098545
-
-// Display the value
-print("Double data type is", inputdata1)
-
-// Creating double data type
-var inputdata2: Double = 1.9786677532
-
-// Display the value
-print("Double data type is", inputdata2)</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_booleano">Booleano</h4>
-<div class="paragraph">
-<p>Valores lógicos <code>true</code> y <code>false</code>. Se utiliza la palabra clave <code>Bool</code> en
-la declaración.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">// Swift program to demonstrate boolean datatype
-
-// Creating boolean data type
-var inputdata1: Bool = true
-
-// Display the value
-print("Boolean data type is", inputdata1)
-
-// Creating boolean data type
-var inputdata2: Bool = false
-
-// Display the value
-print("Boolean data type is", inputdata2)</code></pre>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_character">Character</h5>
-<div class="paragraph">
-<p>Se utiliza para almacenar un solo caracter. Se utiliza la palabra clave
-<code>Character</code> en la declaración.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">// Swift program to demonstrate character datatype
-
-// Creating character data type
-var inputdata1: Character = "G"
-
-// Display the value
-print("Character data type is", inputdata1)
-
-// Creating character data type
-var inputdata2: Character = "E"
-
-// Display the value
-print("Character data type is", inputdata2)</code></pre>
-</div>
-</div>
-<div class="sect5">
-<h6 id="_anterior_inicio_siguiente"><a href="intro.html">Anterior</a> | <a href="index.html">Inicio</a> | <a href="controlFlujo.html">Siguiente</a></h6>
-
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -714,7 +776,7 @@ print("Character data type is", inputdata2)</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-01-23 15:59:28 -0600
+Last updated 2024-01-19 14:02:19 -0600
 </div>
 </div>
 </body>

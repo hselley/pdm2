@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.18">
-<title>Funciones</title>
+<meta name="generator" content="Asciidoctor 2.0.20">
+<title>Ingreso de datos desde la terminal</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -208,13 +208,10 @@ table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
 .admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
 .admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
 .exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
-.exampleblock>.content>:first-child{margin-top:0}
-.exampleblock>.content>:last-child{margin-bottom:0}
 .sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
-.sidebarblock>:first-child{margin-top:0}
-.sidebarblock>:last-child{margin-bottom:0}
 .sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
-.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content>:first-child,.sidebarblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child,.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
 .literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
 @media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
 @media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
@@ -393,7 +390,7 @@ b.conum *{color:inherit!important}
 dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
 h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
 p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
-p,blockquote,dt,td.content,span.alt,summary{font-size:1.0625rem}
+p,blockquote,dt,td.content,td.hdlist1,span.alt,summary{font-size:1.0625rem}
 p{margin-bottom:1.25rem}
 .sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
 .exampleblock>.content{background:#fffef7;border-color:#e0e0dc;box-shadow:0 1px 4px #e0e0dc}
@@ -438,212 +435,66 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article">
 <div id="header">
-<h1>Funciones</h1>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_sintáxis_para_declaración">Sintáxis para declaración</h2>
+<h2 id="_ingreso_de_datos_desde_la_terminal">Ingreso de datos desde la terminal</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Las funciones sirven para escribir código modular y reusable. La
-declaración de una función en swift se hace con la palabra clave <code>func</code>.</p>
+<p>Swift tiene la instrucción <code>readLine()</code> que permite solicitar al
+usuario una entrada desde el teclado y almacenarla en una constante o
+variable <em>String Opcional</em>.</p>
+</div>
+<div class="paragraph">
+<p>Para leer una entrada y guardarla en una constante <em>x</em>, se debe
+<em>desenvolver</em> la entrada dado que se traba de un <em>String Opcional</em>. Por
+lo tanto, el código queda de la siguiente forma:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">func ejemplo() {
-   let mensaje = "Hola mundo"
-   print(mensaje)
+<pre class="highlight"><code class="language-swift" data-lang="swift">if let x = readLine() {
+    print("La entrada es: \(x)")
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Esta función llamada <code>ejemplo</code> tiene algunas instrucciones en su
-interior, no recibe argumentos ni devuelve algún resultado. Para ser
-invocada la función, se debe escribir su nombre y los paréntesis (aunque
-se encuentren vacios). Si no se incluyen los paréntesis el compilador
-señalará un error de sintáxis.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_funciones_que_reciben_argumentos">Funciones que reciben argumentos</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Para que una función reciaba un argumento es necesario indicarlo dentro
-de los paréntesis al declarar la función. Se debe indicar el nombre del
-argumento y su tipo de dato.</p>
+<p>Si lo que se ingresa a través de readLine debe ser tratado como un
+número entero, se debe hacer la conversión con el método <em>Int</em> pero es
+necesario desenvolver el <em>Int Opcional</em>. El código queda de la siguiente
+forma:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">func numero(n:Int) {
-   print("El número recibido es \(n)")
-}
+<pre class="highlight"><code class="language-swift" data-lang="swift">if let entrada = readLine() {
+  if let numero = Int(entrada) {
+      print(numero)
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Si deseara convertir la entrada a otro tipo de dato numérico, bastaría
+con usar de la misma forma los métodos <em>Float</em> o <em>Double</em>.</p>
+</div>
+<div class="paragraph">
+<p>Si desea recibir dos números desde <code>readLine</code>, primero se leen las
+entradas y luego se deben desenvolver los <em>String Opcionales</em> y los <em>Int
+Opcionales</em> utilizando un solo <code>if</code> simultáneo. El código queda de la
+siguiente forma:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">// Se piden dos entradas:
+let entrada1 = readLine()
+let entrada2 = readLine()
 
-numero(n:2)</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Observe que al invocar a la función y enviarle un argumento, se debe
-hacer referencia a la constante que recibirá el valor. Estos se llaman
-parámetros etiquetados. Si omitiera el nombre de la constante que
-recibirá el valor (aún y cuando sea sólo un parámetro) el compilador
-indicará un error.</p>
-</div>
-<div class="paragraph">
-<p>Si se desean más parámetros de entrada hay que listarlos en la
-declaración de la función.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">func numeros(n1:Int, n2: Double) {
-    print("Los números recibidos son \(n1) y \(n2)")
-}
-
-numeros(n1:5, n2:6)</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Observe que los tipos de datos de los argumentos pueden ser diferentes
-entre sí.</p>
-</div>
-<div class="paragraph">
-<p>Considere además que cuando se envían varios parámetros a la función, se
-deben listar en el orden en el que fueron declarados.</p>
-</div>
-<div class="paragraph">
-<p>Además considere que en swift los argumentos de entrada son siempre
-constantes, por lo que si desea cambiar el valor del argumento se debe
-declarar una variable del mismo tipo y asignarle el valor dentro de la
-misma función. Esa variable puede tener incluso el mismo nombre si así
-lo desea.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_funciones_que_devuelven_resultado">Funciones que devuelven resultado</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Para que las funciones devuelvan un resultado es necesario indicarlo en
-la declaración. Se debe indicar el tipo de dato que será devuelto y
-dentro de la función se debe utilizar la palabra clave <code>return</code>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">func suma(n1:Int, n2:Int) -&gt; Int {
-    return n1+n2
-}
-
-let s = suma(n1:5, n2:6)
-print(s)</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_argumentos_no_etiquetados">Argumentos no etiquetados</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Swift permite que los argumentos no tengan una etiqueta si así lo desea,
-aunque no se recomienda. Para ello, se debe agregar el caracter especial
-<code>_</code> previo al nombre de la etiqueta en la declaración de la función.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">func suma(_ n1:Int, _ n2:Int) -&gt; Int {
-    return n1+n2
-}
-
-let s = suma(5, 6)
-print(s)</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_argumentos_personalizados">Argumentos personalizados</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Es posible cambiar las etiquetas de los argumentos de las funciones. Se
-puede personalizar la etiqueta e indicar la constante en la cual se
-recibirá el valor.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">func saludo(_ persona: String, en dia: String) -&gt; String {
-    return "Hola \(persona), hoy es \(dia)."
-}
-let x = saludo("Juan", en: "Miercoles")
-print(x)</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_funciones_anidadas">Funciones anidadas</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Se pueden anidar funciones, esto es, definir una función dentro de otra
-función.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">func returnFifteen() -&gt; Int {
-    var y = 10
-    func add() {
-        y += 5
-    }
-    add()
-    return y
-}
-let y = returnFifteen()
-print(y)</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_funciones_devueltas_por_otra_función">Funciones devueltas por otra función</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Las funciones son tipo primera clase, esto significa que una función
-puede devolver otra función.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">func makeIncrementer() -&gt; ((Int) -&gt; Int) {
-    func addOne(number: Int) -&gt; Int {
-        return 1 + number
-    }
-    return addOne
-}
-var increment = makeIncrementer()
-increment(7)</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_funciones_como_argumento">Funciones como argumento</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Las funciones pueden tener una función como su argumento de entrada.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">func hasAnyMatches(list: [Int], condition: (Int) -&gt; Bool) -&gt; Bool {
-    for item in list {
-        if condition(item) {
-            return true
-        }
-    }
-    return false
-}
-func lessThanTen(number: Int) -&gt; Bool {
-    return number &lt; 10
-}
-var numbers = [20, 19, 7, 12]
-let b = hasAnyMatches(list: numbers, condition: lessThanTen)
-print(b)</code></pre>
+// Se desenvuelven simultáneamente:
+if let respuesta1 = entrada1,
+  let respuesta2 = entrada2,
+  let num1 = Int(respuesta1),
+  let num2 = Int(respuesta2) {
+    print("The sum of \(num1) and \(num2) is \(num1 + num2)")
+}</code></pre>
 </div>
 </div>
 </div>
@@ -651,7 +502,7 @@ print(b)</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-01-30 15:57:47 -0600
+Last updated 2024-01-19 14:03:38 -0600
 </div>
 </div>
 </body>

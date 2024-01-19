@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.18">
-<title>Tipos opcionales</title>
+<meta name="generator" content="Asciidoctor 2.0.20">
+<title>Diseño de interfaces de usuario</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -208,13 +208,10 @@ table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
 .admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
 .admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
 .exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
-.exampleblock>.content>:first-child{margin-top:0}
-.exampleblock>.content>:last-child{margin-bottom:0}
 .sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
-.sidebarblock>:first-child{margin-top:0}
-.sidebarblock>:last-child{margin-bottom:0}
 .sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
-.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content>:first-child,.sidebarblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child,.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
 .literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
 @media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
 @media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
@@ -393,7 +390,7 @@ b.conum *{color:inherit!important}
 dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
 h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
 p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
-p,blockquote,dt,td.content,span.alt,summary{font-size:1.0625rem}
+p,blockquote,dt,td.content,td.hdlist1,span.alt,summary{font-size:1.0625rem}
 p{margin-bottom:1.25rem}
 .sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
 .exampleblock>.content{background:#fffef7;border-color:#e0e0dc;box-shadow:0 1px 4px #e0e0dc}
@@ -441,168 +438,183 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_tipos_opcionales">Tipos opcionales</h2>
+<h2 id="_diseño_de_interfaces_de_usuario">Diseño de interfaces de usuario</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>Es común que al abrir una aplicación y presionar algunos botónes, la
-aplicación se cierra súbitamente. ¿Porqué ocurre esto?. Una causa común
-es que una aplicación intente leer una variable que no tiene un valor en
-el tiempo de ejecución, y aquí ocurre el error en la aplicación.</p>
-</div>
-<div class="paragraph">
-<p>La introducción de los opcionales es la forma en que Swift ayuda a los
-desarrolladores a escribir mejor código y prevenir este tipo de errores.</p>
-</div>
-<div class="paragraph">
-<p>Puede parecer un concepto extraño pero la idea es bastante simple. Antes
-de tener acceso a una variable que podría no tener valor, Swift alienta
-a verificarlo primero. Se debe estar seguro de que la variable tiene un
-valor antes de cualquier procesamiento, esto puede prevenir un cierre
-inesperado de la aplicación.</p>
-</div>
-<div class="paragraph">
-<p>Cuando se declara una variable Swift necesita que tenga un valor, de
-esta forma una variable no opcional está garantizado que tiene un valor.
-Si se intenta declarar una variable sin un valor, el compilador marca un
-error.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">var variable:String
-
-print(variable)</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>En algunas situaciones se debe declarar una variable sin un valor
-inicial, por ejemplo en un formulario. No todos los campos son
-imperativos, algunos campos pueden ser opcionales por lo que podrían no
-tener un valor.</p>
-</div>
-<div class="paragraph">
-<p>Técnicamente, opcional es un tipo de dato en Swift e indica que la
-variable en cuestión podría tener o no un valor. Para declarar una
-variable como opcional se le debe agregar un signo de interrogación a la
-declaración.</p>
-</div>
-<div class="paragraph">
-<p>Este código ya no marcará un error, pero preste atención a la impresión
-del <code>print</code>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">var variable:String?
-
-print(variable)</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>En el código, se ha declarado una variable de tipo <code>String</code> y que es
-<code>opcional</code>, por esa razón es que el compilador no marca un error. A
-diferencia de las variables no opcionales, se debe indicar
-explícitamente el tipo de dato y no será posible que el compilador
-deduzca el tipo adecuado de acuerdo al primer valor que se almacene en
-la variable.</p>
-</div>
-<div class="paragraph">
-<p>En la salida del código se obtiene el mensaje <code>nil</code>, lo que significa
-que la variable no tiene un valor. Se puede asignar un valor a la
-variable de la manera habitual. Al agregar una asignación al código de
-ejemplo, la salida imprime el mensaje pero indica algunos mensajes de
-advertencia.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">var variable:String?
-
-variable = "Hola mundo"
-
-let mensaje = "El mensaje es: " + variable
-
-print(mensaje)</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>En los mensajes de advertencia swift indica que la variable opcional no
-tiene un valor por defecto, lo que podría ocasionar un problema en la
-aplicación.</p>
-</div>
 <div class="sect2">
-<h3 id="_forzar_desenvolvimiento">Forzar desenvolvimiento</h3>
+<h3 id="_usabilidad">Usabilidad</h3>
 <div class="paragraph">
-<p>Con las variables opcionales es necesario un mecanismo para verificar y
-desenvolver el valor, swift ofrece diversas formas.</p>
-</div>
-<div class="paragraph">
-<p>Se puede utilizar un <code>if</code> para verificar si la variable opcional tiene
-un valor comparandola con <code>nil</code>, si se determina que la variable tiene
-un valor entonces se desenvuelve.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">var variable:String?
-
-variable = "Hola mundo"
-
-if variable != nil {
-    let  mensaje = "El mensaje es: " + variable!
-    print(mensaje)
-}</code></pre>
-</div>
+<p>Usabilidad es un atributo de calidad que asegura cuán fácil son de
+utilizar las interfaces gráficas. La palabra usabilidad se refiere a los
+métodos para mejorar la facilidad de uso durante el proceso de diseño.</p>
 </div>
 <div class="paragraph">
-<p>Si la variable no es igual a <code>nil</code> entonces debe tener un valor, por lo
-que se pueden ejecutar sentencias dentro del if que requieran el valor
-de la variable. Se debe agregar el símbolo <code>!</code> a la variable opcional
-para indicarle a swift que dicha variable si tiene un valor y es seguro
-utilizarla.</p>
+<p>La usabilidad es el grado en el que un software puede ser utilizado por
+consumidores específicos para alcanzar objetivos cuantificados con
+efectividad, eficiencia y satisfacción dentro del contexto de uso
+cuantificado.</p>
+</div>
+<div class="paragraph">
+<p>La usabilidad se define por 5 componentes de calidad:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Intuición. Que tan fácil es para los usuarios completar tareas básicas
+dado el diseño del sitio.</p>
+</li>
+<li>
+<p>Eficiencia. Una vez que los usuarios han aprendido el diseño, cuan
+fácil puede realizar alguna tarea específica.</p>
+</li>
+<li>
+<p>Memoria. Cuando los usuarios regresan al sitio luego de un periodo de
+tiempo, que tan fácil es utilizarlo con destreza.</p>
+</li>
+<li>
+<p>Errores. La cantidad de errores que el usuario comete, que tan graves
+son y qué tan fácil pueden reponerse de los errores.</p>
+</li>
+<li>
+<p>Satisfacción. Que tan agradable es el diseño del sitio.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Existen otros importantes atributos de calidad, uno muy importante es la
+utilidad (uso), que se refiere a la funcionalidad del diseño. ¿El diseño
+resuelve las necesidades del usuario?</p>
+</div>
+<div class="paragraph">
+<p>Usabilidad y utilidad son igualmente importantes y juntos determinan
+cuando algo es útil. Importa poco si algo es útil pero no es lo que se
+desea. Tampoco es bueno si el sistema puede hacer hipotéticamente lo que
+se desea pero la interfaz es muy complicada.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Utilidad: si se provee o no las características deseadas.</p>
+</li>
+<li>
+<p>Usabilidad: Que tan fácil y agradable es utilizar éstas
+características.</p>
+</li>
+<li>
+<p>Útil: Utilidad + usabilidad.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_enlace_opcional">Enlace opcional</h3>
+<h3 id="_porqué_es_importante_la_usabilidad">Porqué es importante la Usabilidad</h3>
 <div class="paragraph">
-<p>Este es el mecanismo más recomendado para el manejo de las variables
-opcionales, y no requiere el uso del símbolo <code>!</code>.</p>
+<p>La usabilidad es una condición necesaria para la supervivencia, si una
+aplicación es difícil de utilizar el usuario la anbandonará. Si la
+aplicación falla en establecer lo que se ofrece y lo que los usuarios
+pueden hacer en ella, sus usuarios la abandonarán. Si los usuarios se
+pierden en la aplicación o no encuentran rápidamente lo que buscan, la
+abandonarán. Si hay mucho que leer o bien no responde a las expectativas
+más comúnes de los usuarios, la abandonarán.</p>
 </div>
 <div class="paragraph">
-<p>El código con enlace opcional queda de la siguiente forma:</p>
+<p>En la actualidad los usuarios tienen más opciones que nunca antes. Como
+consecuencia de esta gran cantidad de opciones los usuarios han
+desarrollado una destacable impaciencia y absurda necesidad de la
+gratificación instantánea: <strong>El usuario promedio de Internet tiene un
+alto déficit de atención.</strong></p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">var variable:String?
+</div>
+<div class="sect2">
+<h3 id="_recomendaciones_para_crear_buenas_interfaces_de_usuario">Recomendaciones para crear buenas interfaces de usuario</h3>
+<div class="paragraph">
+<p>Cualquier interfaz de usuario debe ser diseñada para que sea fácil de
+usar, fácil de aprender, fácil de recordar y útil para los usuarios.
+John Gould and Clayton Lewis recomiendan que los diseñadores que buscan
+una buena usabilidad sigan los siguientes tres principios de diseño:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Comenzar con un enfoque en los usuarios finales y las tareas que se
+necesita que el diseño realice.</p>
+</li>
+<li>
+<p>Medida empírica utilizando indicadores cuantitativos y cualitativos.</p>
+</li>
+<li>
+<p>Diseño iterativo, en el cual los diseñadores trabajan en una serie de
+etapas, mejorando el diseño en cada iteración.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>En resumen, los puntos recomendables que debe tomar en cuenta al
+desarrollar una interfaz de usuario son los siguientes:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Simplicidad</strong>. <em>Siga el modelo K.I.S.S. = Keep It Stupid Simple</em>. La
+interfaz debe ser lo suficientemente simple en su diseño y en su
+contenido. Esto sin necesidad de sacrificar la funcionalidad que la
+interfaz debe cumplir. Si la interfaz no es simple, su aplicación no
+será atractiva para los usuarios y ellos no la utilizarán.</p>
+</li>
+<li>
+<p><strong>Familiaridad</strong>. <em>No desafíe las expectativas del usuario</em>. Utilice la
+distribución del contenido que sea frecuente en las aplicaciones
+actuales, no elementos de lugar de manera que impacten a la experiencia
+del usuario. En el contexto del desarrollo de aplicaciones en iOS, esto
+será más simple debido a que Apple tiene lineamientos que se deben
+cumplir si es que se desea que su aplicación sea aprobada para su
+publicación.</p>
+</li>
+<li>
+<p><strong>Tipografía</strong>. Una elección de una tipografía vistosa puede impactar
+fuertemente el éxito de una aplicación. La recomendación es que utilice
+la misma tipografía que el sistema operativo que hospeda la aplicación,
+en este caso iOS. Aunque Apple permite que las aplicaciones utilicen
+tipografías distintas a las usadas dentro de iOS, no complique la vida
+del usuario seleccionando tipografías vistosas pero difíciles de leer.
+Esto volverá protagonista a la tipografía en lugar de la funcionalidad
+de la aplicación, razón por la cual el usuario la ha descargado.</p>
+</li>
+<li>
+<p><strong>Color</strong>. Los colores pueden ser un elemento clave para que la
+aplicación destaque o bien que se hunda en el olvido. No elija colores
+que dificulten la lectura o que resulten molestos a la vista. Use
+paletas suaves que faciliten la navegación y lectura, hay muchas
+referencias existentes donde podrá encontrar este tipo de paletas de
+colores.</p>
+</li>
+<li>
+<p><strong>Relevancia</strong>. Utilice imágenes o videos relevantes a lo que ofrece su
+aplicación. No incluya imágenes sólo porque son vistosas o
+impresionantes. Los usuarios en general prefieren que la interfaz sea
+más simple de usar en lugar de más impresionante. Si es necesaria la
+inclusión de imágenes, no utilice memes o imágenes cualesquiera de
+Internet, en su lugar contrate a un fotógrafo o busque una referencia
+más formal como fuente de sus imágenes. Una imágen puede ser el
+diferenciador en que el usuario prefiera utilizar su aplicación o no.</p>
+</li>
+<li>
+<p><strong>Enfóquese en el problema y su solución</strong>. Cualquiera que sea el
+servicio que provea su aplicación, su trabajo consiste en darle una
+solución al problema que tiene el usuario. Esto debe ser el centro de su
+aplicación, si falla en resolver el problema entonces el usuario no
+deseará utilizar nuevamente su aplicación.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Haga pruebas con usuarios para verificar lo que sirve y no sirve de su
+interfaz, observe sin intervenir lo que hace el usuario y tome notas.
+Esta experiencia de usuario le indicará si existe un fallo de diseño o
+funcionalidad y donde encontrarlo.</p>
+</div>
+<div class="sect3">
+<h4 id="_anterior_inicio_siguiente"><a href="index.html">Anterior</a> | <a href="index.html">Inicio</a> | <a href="intro.html">Siguiente</a></h4>
 
-variable = "Hola mundo"
-
-if let valorVariable = variable {
-    let  mensaje = "El mensaje es: " + valorVariable
-    print(mensaje)
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Se utiliza if let para determinar si la variable tiene un valor, y en
-caso afirmativo se asigna a una constante temporal. Como puede ver, no
-fue necesario el sufijo <code>!</code>.</p>
-</div>
-<div class="paragraph">
-<p>Es posible utilizar el mismo nombre para la constante temporal y la
-variable opcional.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">var variable:String?
-
-variable = "Hola mundo"
-
-if let variable = variable {
-    let  mensaje = "El mensaje es: " + variable
-    print(mensaje)
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p><strong>Nota</strong>: A pesar de que la variable opcional y la constante temporal
-tienen el mismo nombre, son distintas entre sí.</p>
 </div>
 </div>
 </div>
@@ -610,7 +622,7 @@ tienen el mismo nombre, son distintas entre sí.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-01-29 23:56:07 -0600
+Last updated 2024-01-19 14:00:19 -0600
 </div>
 </div>
 </body>

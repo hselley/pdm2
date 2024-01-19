@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.18">
-<title>Ingreso de datos desde la terminal</title>
+<meta name="generator" content="Asciidoctor 2.0.20">
+<title>Programación para Dispositivos Móviles 2</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -208,13 +208,10 @@ table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
 .admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
 .admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
 .exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
-.exampleblock>.content>:first-child{margin-top:0}
-.exampleblock>.content>:last-child{margin-bottom:0}
 .sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
-.sidebarblock>:first-child{margin-top:0}
-.sidebarblock>:last-child{margin-bottom:0}
 .sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
-.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content>:first-child,.sidebarblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child,.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
 .literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
 @media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
 @media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
@@ -393,7 +390,7 @@ b.conum *{color:inherit!important}
 dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
 h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
 p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
-p,blockquote,dt,td.content,span.alt,summary{font-size:1.0625rem}
+p,blockquote,dt,td.content,td.hdlist1,span.alt,summary{font-size:1.0625rem}
 p{margin-bottom:1.25rem}
 .sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
 .exampleblock>.content{background:#fffef7;border-color:#e0e0dc;box-shadow:0 1px 4px #e0e0dc}
@@ -441,63 +438,60 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_ingreso_de_datos_desde_la_terminal">Ingreso de datos desde la terminal</h2>
+<h2 id="_programación_para_dispositivos_móviles_2">Programación para Dispositivos Móviles 2</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>Swift tiene la instrucción <code>readLine()</code> que permite solicitar al usuario
-una entrada desde el teclado y almacenarla en una constante o variable
-<em>String Opcional</em>.</p>
+<div class="sect2">
+<h3 id="_temario">Temario</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="diu.html">Diseño de interfaces de usuario</a></p>
+</li>
+<li>
+<p><a href="intro.html">Introducción a Swift + XCode</a></p>
+</li>
+<li>
+<p><a href="variables.html">Variables y propiedades</a></p>
+</li>
+<li>
+<p>Números</p>
+</li>
+<li>
+<p>Cadenas y caracteres</p>
+</li>
+<li>
+<p>Booleanos</p>
+</li>
+<li>
+<p>Arreglos</p>
+</li>
+<li>
+<p>Tuplas</p>
+</li>
+<li>
+<p>Estructuras</p>
+</li>
+<li>
+<p>Conjuntos</p>
+</li>
+<li>
+<p>Diccionarios</p>
+</li>
+</ol>
 </div>
-<div class="paragraph">
-<p>Para leer una entrada y guardarla en una constante <em>x</em>, se debe
-<em>desenvolver</em> la entrada dado que se traba de un <em>String Opcional</em>. Por
-lo tanto, el código queda de la siguiente forma:</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">if let x = readLine() {
-    print("La entrada es: \(x)")
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Si lo que se ingresa a través de readLine debe ser tratado como un
-número entero, se debe hacer la conversión con el método <em>Int</em> pero es
-necesario desenvolver el <em>Int Opcional</em>. El código queda de la siguiente
-forma:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">if let entrada = readLine() {
-  if let numero = Int(entrada) {
-      print(numero)
-  }
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Si deseara convertir la entrada a otro tipo de dato numérico, bastaría
-con usar de la misma forma los métodos <em>Float</em> o <em>Double</em>.</p>
-</div>
-<div class="paragraph">
-<p>Si desea recibir dos números desde <code>readLine</code>, primero se leen las
-entradas y luego se deben desenvolver los <em>String Opcionales</em> y los <em>Int
-Opcionales</em> utilizando un solo <code>if</code> simultáneo. El código queda de la
-siguiente forma:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">// Se piden dos entradas:
-let entrada1 = readLine()
-let entrada2 = readLine()
-
-// Se desenvuelven simultáneamente:
-if let respuesta1 = entrada1,
-  let respuesta2 = entrada2,
-  let num1 = Int(respuesta1),
-  let num2 = Int(respuesta2) {
-    print("The sum of \(num1) and \(num2) is \(num1 + num2)")
-}</code></pre>
+<div class="sect2">
+<h3 id="_recursos_en_línea">Recursos en línea</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.swift.org/documentation/">Documentación oficial Swift</a></p>
+</li>
+<li>
+<p><a href="https://docs.swift.org/swift-book/TheSwiftProgrammingLanguage.epub">Libro
+ePub: The Swift Programming Language</a></p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -505,7 +499,7 @@ if let respuesta1 = entrada1,
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-01-26 14:55:56 -0600
+Last updated 2024-01-19 14:04:41 -0600
 </div>
 </div>
 </body>

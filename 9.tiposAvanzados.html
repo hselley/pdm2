@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.18">
+<meta name="generator" content="Asciidoctor 2.0.20">
 <title>Tipos de datos avanzados</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -208,13 +208,10 @@ table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
 .admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
 .admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
 .exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
-.exampleblock>.content>:first-child{margin-top:0}
-.exampleblock>.content>:last-child{margin-bottom:0}
 .sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
-.sidebarblock>:first-child{margin-top:0}
-.sidebarblock>:last-child{margin-bottom:0}
 .sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
-.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content>:first-child,.sidebarblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child,.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
 .literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
 @media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
 @media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
@@ -393,7 +390,7 @@ b.conum *{color:inherit!important}
 dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
 h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
 p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
-p,blockquote,dt,td.content,span.alt,summary{font-size:1.0625rem}
+p,blockquote,dt,td.content,td.hdlist1,span.alt,summary{font-size:1.0625rem}
 p{margin-bottom:1.25rem}
 .sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
 .exampleblock>.content{background:#fffef7;border-color:#e0e0dc;box-shadow:0 1px 4px #e0e0dc}
@@ -846,8 +843,8 @@ print(dict)</code></pre>
 <h4 id="_obtener_las_llaves_de_un_diccionario">Obtener las llaves de un diccionario</h4>
 <div class="paragraph">
 <p>Si desea obtener las llaves del diccionario, puede hacerlo con el
-operador <code>keys</code> y recibir el resultado como un arreglo. Esto es posible
-dado que las llaves tienen el mismo tipo de dato.</p>
+operador <code>keys</code> y recibir el resultado como un arreglo. Esto es
+posible dado que las llaves tienen el mismo tipo de dato.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1418,10 +1415,10 @@ de dato.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Un ejemplo de una estructura llamada <code>Person</code> que contiene dos variables
-<code>name</code> y <code>age</code>, de tipo <code>String</code> e <code>Int</code> respectivamente. Las variables,
-llamadas propiedades en el contexto de la estructura, tienen valores
-iniciales.</p>
+<p>Un ejemplo de una estructura llamada <code>Person</code> que contiene dos
+variables <code>name</code> y <code>age</code>, de tipo <code>String</code> e <code>Int</code>
+respectivamente. Las variables, llamadas propiedades en el contexto de
+la estructura, tienen valores iniciales.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1576,8 +1573,8 @@ Por ejemplo, se crea un enum Season y con cuatro valores enum.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Para crear variables tipo <code>enum</code>, donde dicha variable sólo podrá tomar
-los <code>valores enum</code> contenidos por la definición del <code>enum</code>
+<p>Para crear variables tipo <code>enum</code>, donde dicha variable sólo podrá
+tomar los <code>valores enum</code> contenidos por la definición del <code>enum</code>
 correspondiente. Por ejemplo, se crea una variable enum llamada
 currentSeason que sólo puede tomar los valores enum
 <code>{spring, summer, autumn, winter}</code>.</p>
@@ -1588,8 +1585,9 @@ currentSeason que sólo puede tomar los valores enum
 </div>
 </div>
 <div class="paragraph">
-<p>Un ejemplo completo de la definición de un <code>enum</code>, sus <code>valores enum</code>,
-la declaración de una variable y asignación de un valor enum.</p>
+<p>Un ejemplo completo de la definición de un <code>enum</code>, sus
+<code>valores enum</code>, la declaración de una variable y asignación de un
+valor enum.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1634,13 +1632,13 @@ switch(size) {
 </div>
 <div class="paragraph">
 <p>Observe que el los cases del switch no se hace una referencia al nombre
-del <code>enum</code> correspondiente, incluir el nombre es opcional. Esto ayuda a
-tener un código más limpio.</p>
+del <code>enum</code> correspondiente, incluir el nombre es opcional. Esto ayuda
+a tener un código más limpio.</p>
 </div>
 <div class="paragraph">
 <p>Es posible iterar sobre los enum cases mediante el ciclo for, es
-necesario utilizar el método <code>allCases</code>. Además es necesario agregar el
-parámetro <code>CaseIterable</code> al momento de definir el enum.</p>
+necesario utilizar el método <code>allCases</code>. Además es necesario agregar
+el parámetro <code>CaseIterable</code> al momento de definir el enum.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1656,8 +1654,8 @@ for currentSeason in Season.allCases {
 </div>
 </div>
 <div class="paragraph">
-<p>En Swift es posible asignar valores específicos para cada <code>valor enum</code>,
-esto se llama valores <em>crudos</em>.</p>
+<p>En Swift es posible asignar valores específicos para cada
+<code>valor enum</code>, esto se llama valores <em>crudos</em>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1745,7 +1743,7 @@ print(offer)</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-02-15 14:48:35 -0600
+Last updated 2024-01-19 14:04:03 -0600
 </div>
 </div>
 </body>

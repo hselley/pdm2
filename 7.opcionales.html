@@ -4,9 +4,8 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.18">
-<meta name="author" content="En Swift existen las sentecnias de control de flujo básicas.">
-<title>Control de Flujo</title>
+<meta name="generator" content="Asciidoctor 2.0.20">
+<title>Tipos opcionales</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -209,13 +208,10 @@ table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
 .admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
 .admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
 .exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
-.exampleblock>.content>:first-child{margin-top:0}
-.exampleblock>.content>:last-child{margin-bottom:0}
 .sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
-.sidebarblock>:first-child{margin-top:0}
-.sidebarblock>:last-child{margin-bottom:0}
 .sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
-.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content>:first-child,.sidebarblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child,.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
 .literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
 @media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
 @media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
@@ -394,7 +390,7 @@ b.conum *{color:inherit!important}
 dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
 h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
 p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
-p,blockquote,dt,td.content,span.alt,summary{font-size:1.0625rem}
+p,blockquote,dt,td.content,td.hdlist1,span.alt,summary{font-size:1.0625rem}
 p{margin-bottom:1.25rem}
 .sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
 .exampleblock>.content{background:#fffef7;border-color:#e0e0dc;box-shadow:0 1px 4px #e0e0dc}
@@ -439,138 +435,179 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article">
 <div id="header">
-<h1>Control de Flujo</h1>
-<div class="details">
-<span id="author" class="author">En Swift existen las sentecnias de control de flujo básicas.</span><br>
-</div>
 </div>
 <div id="content">
-<div id="preamble">
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>if-else</p>
-</li>
-<li>
-<p>switch</p>
-</li>
-<li>
-<p>for</p>
-</li>
-<li>
-<p>for in</p>
-</li>
-<li>
-<p>while</p>
-</li>
-<li>
-<p>do-while</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
 <div class="sect1">
-<h2 id="_if_else">If-else</h2>
+<h2 id="_tipos_opcionales">Tipos opcionales</h2>
 <div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">var timeYouWakeUp = 6
-if timeYouWakeUp == 6 {
-    print("Cook yourself a big breakfast!")
-} else {
-    print("Go out for breakfast")
-}</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_swicth">Swicth</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">var timeYouWakeUp = 6
-switch timeYouWakeUp {
-case 6:
-    print("Cook yourself a big breakfast!")
-default:
-    print("Go out for breakfast")
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Es común que al abrir una aplicación y presionar algunos botónes, la
+aplicación se cierra súbitamente. ¿Porqué ocurre esto?. Una causa común
+es que una aplicación intente leer una variable que no tiene un valor en
+el tiempo de ejecución, y aquí ocurre el error en la aplicación.</p>
 </div>
 <div class="paragraph">
-<p>No existe una regla universal para cuando utilizar if-else o switch,
-ocasionalmente se elige alguno de los dos para escribir código que
-sea más facil de leer y en otras ocasiones una de las estructuras se
-acomoda mejor a la necesidad.</p>
+<p>La introducción de los opcionales es la forma en que Swift ayuda a los
+desarrolladores a escribir mejor código y prevenir este tipo de errores.</p>
 </div>
 <div class="paragraph">
-<p>Vayamos a un ejemplo. Diagmos que cada año usted recibe un bono,
-y de acuerdo al bono decidirá el destino al que realizará un viaje.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Si recibe un bono de $10000 o más, viajará a Paris y Londres.</p>
-</li>
-<li>
-<p>Si el bono está entre $5000 y $9999, viajará a Tokio.</p>
-</li>
-<li>
-<p>Si el bono está entre $1000 y $4999, viajará a Bangkok.</p>
-</li>
-<li>
-<p>Si el bono es menor a $1000, se quedará en casa.</p>
-</li>
-</ul>
+<p>Puede parecer un concepto extraño pero la idea es bastante simple. Antes
+de tener acceso a una variable que podría no tener valor, Swift alienta
+a verificarlo primero. Se debe estar seguro de que la variable tiene un
+valor antes de cualquier procesamiento, esto puede prevenir un cierre
+inesperado de la aplicación.</p>
 </div>
 <div class="paragraph">
-<p>Esta es la versión con <code>if-else</code>.</p>
+<p>Cuando se declara una variable Swift necesita que tenga un valor, de
+esta forma una variable no opcional está garantizado que tiene un valor.
+Si se intenta declarar una variable sin un valor, el compilador marca un
+error.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">var bonus = 5000
-if bonus &gt;= 10000 {
-    print("I will travel to Paris and London!")
-} else if bonus &gt;= 5000 {
-    print("I will travel to Tokyo")
-} else if bonus &gt;= 1000 {
-    print("I will travel to Bangkok")
-} else {
-    print("Just stay home")
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Esta es la versión con <code>switch-case</code>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">var bonus = 5000
-switch bonus {
-case 10000...:
-    print("I will travel to Paris and London!")
-case 5000...9999:
-    print("I will travel to Tokyo")
-case 1000...4999:
-    print("I will travel to Bangkok")
-default:
-    print("Just stay home")
-}</code></pre>
-</div>
-</div>
-<div class="sect5">
-<h6 id="_anteriorvariables_html_inicioindex_html_siguiente">[Anterior](variables.html) | [Inicio](index.html) | [Siguiente]()</h6>
+<pre class="highlight"><code class="language-swift" data-lang="swift">var variable:String
 
+print(variable)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>En algunas situaciones se debe declarar una variable sin un valor
+inicial, por ejemplo en un formulario. No todos los campos son
+imperativos, algunos campos pueden ser opcionales por lo que podrían no
+tener un valor.</p>
+</div>
+<div class="paragraph">
+<p>Técnicamente, opcional es un tipo de dato en Swift e indica que la
+variable en cuestión podría tener o no un valor. Para declarar una
+variable como opcional se le debe agregar un signo de interrogación a la
+declaración.</p>
+</div>
+<div class="paragraph">
+<p>Este código ya no marcará un error, pero preste atención a la impresión
+del <code>print</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">var variable:String?
+
+print(variable)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>En el código, se ha declarado una variable de tipo <code>String</code> y que es
+<code>opcional</code>, por esa razón es que el compilador no marca un error. A
+diferencia de las variables no opcionales, se debe indicar
+explícitamente el tipo de dato y no será posible que el compilador
+deduzca el tipo adecuado de acuerdo al primer valor que se almacene en
+la variable.</p>
+</div>
+<div class="paragraph">
+<p>En la salida del código se obtiene el mensaje <code>nil</code>, lo que significa
+que la variable no tiene un valor. Se puede asignar un valor a la
+variable de la manera habitual. Al agregar una asignación al código de
+ejemplo, la salida imprime el mensaje pero indica algunos mensajes de
+advertencia.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">var variable:String?
+
+variable = "Hola mundo"
+
+let mensaje = "El mensaje es: " + variable
+
+print(mensaje)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>En los mensajes de advertencia swift indica que la variable opcional no
+tiene un valor por defecto, lo que podría ocasionar un problema en la
+aplicación.</p>
+</div>
+<div class="sect2">
+<h3 id="_forzar_desenvolvimiento">Forzar desenvolvimiento</h3>
+<div class="paragraph">
+<p>Con las variables opcionales es necesario un mecanismo para verificar y
+desenvolver el valor, swift ofrece diversas formas.</p>
+</div>
+<div class="paragraph">
+<p>Se puede utilizar un <code>if</code> para verificar si la variable opcional tiene
+un valor comparandola con <code>nil</code>, si se determina que la variable tiene
+un valor entonces se desenvuelve.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">var variable:String?
+
+variable = "Hola mundo"
+
+if variable != nil {
+    let  mensaje = "El mensaje es: " + variable!
+    print(mensaje)
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Si la variable no es igual a <code>nil</code> entonces debe tener un valor, por
+lo que se pueden ejecutar sentencias dentro del if que requieran el
+valor de la variable. Se debe agregar el símbolo <code>!</code> a la variable
+opcional para indicarle a swift que dicha variable si tiene un valor y
+es seguro utilizarla.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_enlace_opcional">Enlace opcional</h3>
+<div class="paragraph">
+<p>Este es el mecanismo más recomendado para el manejo de las variables
+opcionales, y no requiere el uso del símbolo <code>!</code>.</p>
+</div>
+<div class="paragraph">
+<p>El código con enlace opcional queda de la siguiente forma:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">var variable:String?
+
+variable = "Hola mundo"
+
+if let valorVariable = variable {
+    let  mensaje = "El mensaje es: " + valorVariable
+    print(mensaje)
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Se utiliza if let para determinar si la variable tiene un valor, y en
+caso afirmativo se asigna a una constante temporal. Como puede ver, no
+fue necesario el sufijo <code>!</code>.</p>
+</div>
+<div class="paragraph">
+<p>Es posible utilizar el mismo nombre para la constante temporal y la
+variable opcional.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">var variable:String?
+
+variable = "Hola mundo"
+
+if let variable = variable {
+    let  mensaje = "El mensaje es: " + variable
+    print(mensaje)
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Nota</strong>: A pesar de que la variable opcional y la constante temporal
+tienen el mismo nombre, son distintas entre sí.</p>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-01-23 15:47:50 -0600
+Last updated 2024-01-19 14:03:12 -0600
 </div>
 </div>
 </body>

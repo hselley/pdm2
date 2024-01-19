@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.18">
-<title>Introducción a Swift</title>
+<meta name="generator" content="Asciidoctor 2.0.20">
+<title>Funciones</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -208,13 +208,10 @@ table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
 .admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
 .admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
 .exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
-.exampleblock>.content>:first-child{margin-top:0}
-.exampleblock>.content>:last-child{margin-bottom:0}
 .sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
-.sidebarblock>:first-child{margin-top:0}
-.sidebarblock>:last-child{margin-bottom:0}
 .sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
-.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content>:first-child,.sidebarblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child,.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
 .literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
 @media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
 @media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
@@ -393,7 +390,7 @@ b.conum *{color:inherit!important}
 dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
 h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
 p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
-p,blockquote,dt,td.content,span.alt,summary{font-size:1.0625rem}
+p,blockquote,dt,td.content,td.hdlist1,span.alt,summary{font-size:1.0625rem}
 p{margin-bottom:1.25rem}
 .sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
 .exampleblock>.content{background:#fffef7;border-color:#e0e0dc;box-shadow:0 1px 4px #e0e0dc}
@@ -438,294 +435,213 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article">
 <div id="header">
+<h1>Funciones</h1>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_introducción_a_swift">Introducción a Swift</h2>
+<h2 id="_sintáxis_para_declaración">Sintáxis para declaración</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_lanzamiento">Lanzamiento</h3>
 <div class="paragraph">
-<p>En el Worldwide Developer Conference del 2014, Apple sorprendió a los
-desarrolladores de iOS al lanzar un nuevo lenguaje de programación
-llamado <em>Swift</em>. Swift fue anunciado como un lenguaje de programación
-rápido, moderno, seguro e interactivo.</p>
+<p>Las funciones sirven para escribir código modular y reusable. La
+declaración de una función en swift se hace con la palabra clave
+<code>func</code>.</p>
 </div>
-<div class="paragraph">
-<p>El lenguaje es más sencillo de aprender y posee características que
-hacen la programación más productiva.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">func ejemplo() {
+   let mensaje = "Hola mundo"
+   print(mensaje)
+}</code></pre>
 </div>
-<div class="paragraph">
-<p>Previo al anuncio de Swift, las aplicaciones de iOS eran escritas
-principalmente en <em>Objective-C</em>. El lenguaje fue creado por Brad Cox y
-la corporación StepStone en 1980. Fue elegido por Apple como el lenguaje
-principal para el desarrollo de sus aplicaciones en MacOS (antes llamado
-OSX) e iOS. La mayoría de los desarrolladores novatos de iOS consideran
-que Objective-C es muy difícil de aprender, uno de sus aspectos
-negativos es su sintáxis extraña. Estas razones, alejan a programadores
-nuevos que desean aprender a desarrollar aplicaciones en iOS.</p>
 </div>
 <div class="paragraph">
-<p>El lanzamiento del lenguaje de programación Swift es quizá la respuesta
-de Apple a este tipo de comentarios. La sintáxis de Swift es más limpia
-y fácil de leer.</p>
+<p>Esta función llamada <code>ejemplo</code> tiene algunas instrucciones en su
+interior, no recibe argumentos ni devuelve algún resultado. Para ser
+invocada la función, se debe escribir su nombre y los paréntesis (aunque
+se encuentren vacios). Si no se incluyen los paréntesis el compilador
+señalará un error de sintáxis.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_swift_2">Swift 2</h3>
+</div>
+<div class="sect1">
+<h2 id="_funciones_que_reciben_argumentos">Funciones que reciben argumentos</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>En Junio del 2015, Apple anunció Swift 2 y además el lenguaje de
-programación se volvió de código abierto. Esto fue un cambio muy
-importante, dado que hubo desarrolladores que crearon impresionantes
-proyectos de código abierto utilizando este lenguaje. Swift puede ser
-usado no sólo para desarrollar aplicaciones en iOS, empresas como IBM
-que ha desarrollado un framework para la web escrito en Swift. Además, a
-partir de esta versión Swift se puede correr en Linux.</p>
+<p>Para que una función reciaba un argumento es necesario indicarlo dentro
+de los paréntesis al declarar la función. Se debe indicar el nombre del
+argumento y su tipo de dato.</p>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">func numero(n:Int) {
+   print("El número recibido es \(n)")
+}
+
+numero(n:2)</code></pre>
 </div>
-<div class="sect2">
-<h3 id="_swift_3">Swift 3</h3>
-<div class="paragraph">
-<p>Apple lanzó Swift 3 en Junio del 2016. Esta versión del lenguaje de
-programación se integró a XCode 8, que a su vez fue lanzado en
-Septiembre del 2016. Este es considerado uno de los lanzamientos más
-grandes desde el lanzamiento del lenguaje debido a la gran cantidad de
-cambios adoptados. Además las API fueron renombradas y se introdujeron
-más características. Todos estos cambios ayudaron a que los
-desarrolladores pudieran escribir código más bello.</p>
 </div>
 <div class="paragraph">
-<p>Sin embargo, por mucho que el lenguaje fuera mejorando, a los
-desarrolladores les tomó mucho esfuerzo portar sus proyectos desde
-Objective-C a Swift 3.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_swift_4">Swift 4</h3>
-<div class="paragraph">
-<p>En Junio del 2017 Apple anunció Swift 4 junto con XCode 9, que incluían
-muchas mejoras y nuevas características. Esta versión de Swift se enfocó
-en la retro-compatibilidad, esto significa que idealmente todos los
-proyectos desarrollados en Swift 3 + XCodde 8 podían correr en Swift 4<br>
-XCode 9 sin cambio alguno en el código. Aún en el caso de que fuera
-necesario realizar cambios, la migración debería ser menos problemática
-que desde Swift 2.2 a 3.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_swift_5">Swift 5</h3>
-<div class="paragraph">
-<p>A finales de Marzo del 2019 Apple lanzó oficialmente Swift 5, la cual ha
-sido un hito para el lenguaje de programación. Esta versión incluye
-muchas características nuevas, siendo el cambio más importante la
-inclusión del paquete de compatibilidad de ejecución Swift 5 en iOS,
-macOS, watchOS y tvOS. Esto significa que Swift es ahora un lenguaje más
-estable y maduro.</p>
+<p>Observe que al invocar a la función y enviarle un argumento, se debe
+hacer referencia a la constante que recibirá el valor. Estos se llaman
+parámetros etiquetados. Si omitiera el nombre de la constante que
+recibirá el valor (aún y cuando sea sólo un parámetro) el compilador
+indicará un error.</p>
 </div>
 <div class="paragraph">
-<p>El mismo año, 2019, el lenguaje fue actualizado a su versión 5.5 con
-nuevas características. Se introdujeron las funciones <em>async/await</em> que
-hacen una programación asíncrona más sencilla.</p>
+<p>Si se desean más parámetros de entrada hay que listarlos en la
+declaración de la función.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">func numeros(n1:Int, n2: Double) {
+    print("Los números recibidos son \(n1) y \(n2)")
+}
+
+numeros(n1:5, n2:6)</code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p>Luego de esta recapitulación, quizá se pregunte: <em>¿porqué cambia tanto
-Swift?</em>, <em>si se actualiza constantemente, ¿el lenguaje se puede usar?</em>.
-Casi todos los lenguajes cambian con respecto al tiempo, lo mismo le
-ocurre a Swift. Cada año se agregan a Swift nuevas funcionalidades con
-la finalidad de hacerlo más poderoso y amigable para los
-desarrolladores.</p>
+<p>Observe que los tipos de datos de los argumentos pueden ser diferentes
+entre sí.</p>
 </div>
 <div class="paragraph">
-<p>Esto ocurre también con los idiomas, por ejemplo el español. Nuevas
-frases y palabras son agregadas cada año. Todo con la finalidad de
-volver el idioma más útil y sencillo. Lo mismo ocurre con los lenguajes
-de programación y Swift.</p>
+<p>Considere además que cuando se envían varios parámetros a la función, se
+deben listar en el orden en el que fueron declarados.</p>
 </div>
 <div class="paragraph">
-<p>A pesar de que Swift cambie constantemente, no significa que no esté
-listo para utilizarse. Incluso, si se desea desarrollar una aplicación
-en iOS, debería hacerlo en Swift. Esto debido a que el lenguaje se ha
-vuelto un estándar en la industria para el desarrollo de aplicaciones en
-iOS y además el lenguaje cuenta con soporte vigente de Apple.</p>
+<p>Además considere que en swift los argumentos de entrada son siempre
+constantes, por lo que si desea cambiar el valor del argumento se debe
+declarar una variable del mismo tipo y asignarle el valor dentro de la
+misma función. Esa variable puede tener incluso el mismo nombre si así
+lo desea.</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_funciones_que_devuelven_resultado">Funciones que devuelven resultado</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>Empresas como Linkedin, Duolingo y Mozilla han escrito sus aplicaciones
-completamente en Swift desde sus primeras versiones.</p>
+<p>Para que las funciones devuelvan un resultado es necesario indicarlo en
+la declaración. Se debe indicar el tipo de dato que será devuelto y
+dentro de la función se debe utilizar la palabra clave <code>return</code>.</p>
 </div>
-<div class="paragraph">
-<p>Desde la versión 4 de Swift el lenguaje es lo suficientemente estable y
-definitivamente listo para su uso en un entorno profesional o
-empresarial.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_swift_5_7_3">Swift 5.7.3</h3>
-<div class="paragraph">
-<p>La última versión de Swift al momento de escribir esto es la 5.7.3 y se
-encuentra en desarrollo la versión 5.8. Si desea más información acerca
-de las características incluidas en esta última versión, puede
-consultarlo en la <a href="https://www.swift.org/download/">página oficial de
-lanzamientos.</a></p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-swift" data-lang="swift">func suma(n1:Int, n2:Int) -&gt; Int {
+    return n1+n2
+}
+
+let s = suma(n1:5, n2:6)
+print(s)</code></pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_swift_vs_objective_c">Swift vs Objective-C</h2>
+<h2 id="_argumentos_no_etiquetados">Argumentos no etiquetados</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Diferencias entre Swift y Objective-C.</p>
-</div>
-<div class="paragraph">
-<p>Veamos un ejemplo puntual de la diferencia que hay entre Objective-C y
-Swift. Este código <code>Objective-C</code> imprime un mensaje.</p>
+<p>Swift permite que los argumentos no tengan una etiqueta si así lo desea,
+aunque no se recomienda. Para ello, se debe agregar el caracter especial
+<code>_</code> previo al nombre de la etiqueta en la declaración de la función.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-objective-c" data-lang="objective-c">const int count = 10;
-double price = 23.55;
+<pre class="highlight"><code class="language-swift" data-lang="swift">func suma(_ n1:Int, _ n2:Int) -&gt; Int {
+    return n1+n2
+}
 
-NSString *firstMessage = @"Swift is awesome. ";
-NSString *secondMessage = @"What do you think?";
-NSString *message = [NSString stringWithFormat:@"%@%@", firstMessage, secondMessage];
-
-NSLog(@"%@", message);</code></pre>
+let s = suma(5, 6)
+print(s)</code></pre>
 </div>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_argumentos_personalizados">Argumentos personalizados</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>Por otro lado, este código en <code>Swift</code> imprime un mensaje.</p>
+<p>Es posible cambiar las etiquetas de los argumentos de las funciones. Se
+puede personalizar la etiqueta e indicar la constante en la cual se
+recibirá el valor.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">let count = 10
-var price = 23.55
-
-let firstMessage = "Swift is awesome. "
-let secondMessage = "What do you think?"
-var message = firstMessage + secondMessage
-
-print(message)</code></pre>
+<pre class="highlight"><code class="language-swift" data-lang="swift">func saludo(_ persona: String, en dia: String) -&gt; String {
+    return "Hola \(persona), hoy es \(dia)."
+}
+let x = saludo("Juan", en: "Miercoles")
+print(x)</code></pre>
 </div>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_funciones_anidadas">Funciones anidadas</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>El primer bloque fue escrito en <em>Objective-C</em> mietras que el segundo fue
-escrito en <em>Swift</em>. ¿Qué lenguaje prefiere?, ¿porqué?. Es más que
-natural que haya elegido <em>Swift</em>, particularmente si usted se encuentra
-frustrado con la sintáxis de <em>Objective-C</em>.</p>
-</div>
-<div class="paragraph">
-<p>En Swift, el código es más claro y legible, no hay símbolos @ y
-<em>puntos-y-coma</em> en cada línea. En ambos códigos, lo que se realiza es la
-concatenación de dos cadenas.</p>
-</div>
-<div class="paragraph">
-<p>El siguiente código es fácilmente entendible:</p>
+<p>Se pueden anidar funciones, esto es, definir una función dentro de otra
+función.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">var message = firstMessage + secondMessage</code></pre>
+<pre class="highlight"><code class="language-swift" data-lang="swift">func returnFifteen() -&gt; Int {
+    var y = 10
+    func add() {
+        y += 5
+    }
+    add()
+    return y
+}
+let y = returnFifteen()
+print(y)</code></pre>
 </div>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_funciones_devueltas_por_otra_función">Funciones devueltas por otra función</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>mientras que el siguiente código no es tan claro pero realiza la misma
-acción:</p>
+<p>Las funciones son tipo primera clase, esto significa que una función
+puede devolver otra función.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-objective-c" data-lang="objective-c">NSString *message = [NSString stringWithFormat:@"%@%@", firstMessage, secondMessage];</code></pre>
+<pre class="highlight"><code class="language-swift" data-lang="swift">func makeIncrementer() -&gt; ((Int) -&gt; Int) {
+    func addOne(number: Int) -&gt; Int {
+        return 1 + number
+    }
+    return addOne
+}
+var increment = makeIncrementer()
+increment(7)</code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_primeros_pasos_en_swift">Primeros pasos en Swift</h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_funciones_como_argumento">Funciones como argumento</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>Antes de comenzar con XCode, es recomendable conocer el lenguaje de
-programación Swift. El objetivo es distinguir la diferencia entre Swift
-y XCode, uno es un lenguaje de programación y el segundo es un IDE para
-dicho lenguaje.</p>
-</div>
-<div class="sect3">
-<h4 id="_su_primer_programa_en_swift">Su primer programa en Swift</h4>
-<div class="paragraph">
-<p>Utilice algún editor de texto de su preferencia, escriba las siguientes
-líneas y guarde el archivo con el nombre ´holaMundo.swift´.</p>
+<p>Las funciones pueden tener una función como su argumento de entrada.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">print("Hola mundo")</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Para compilar y correr el programa es necesario abrir una terminal y
-ejecutar el comando:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-zsh" data-lang="zsh">$ swift holaMundo.swift</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Si se desea compilar y correr por separado, se debe utilizar el comando
-<code>swiftc</code>. Este comando compila el código y genera un archivo ejecutable.
-Este archivo ejecutable tiene el mismo nombre que el archivo que
-contiene el código y los permisos de ejecución necesarios.</p>
-</div>
-<div class="paragraph">
-<p>Para ejecutar el archivo resultante se debe hacer como cualquier
-ejecutable en una termial UNIX.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-zsh" data-lang="zsh">$ swiftc holaMundo.swift
-$ ./holaMundo</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Si se ejecuta en la termina el comando <code>swift</code> sin argumentos se abrirá
-el intérprete interactivo de Swift.</p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_swift_en_playgrounds_de_xcode">Swift en Playgrounds de XCode</h3>
-<div class="paragraph">
-<p>Los <em>Playgrounds</em> de XCdode son un ambiente de desarrollo interactivo
-que permiten a los desarrolladores experimentar con el lenguaje y además
-pueden mostrar los resultados del código en tiempo real.</p>
-</div>
-<div class="paragraph">
-<p>Un Playgrouind es un tipo especial de archivo de XCdode, se puede crear
-desde el menú <em>File &gt; New &gt; Playground</em>. Esto debe abrir una plantilla
-nueva para el playground. Es posible elegir entre aplicaciones iOS o
-macOS, dado que el enfoque del curso es en aplicaciones móviles se debe
-elegir iOS.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="img/imagen01.png" alt="Playground nuevo">
-</div>
-</div>
-<div class="paragraph">
-<p>El panel central de la pantalla se encuentra el editor donde se puede
-escribir el código. Si se desea probar el códio y observar su
-funcionamiento basta con presionar el botón de <em>Play</em>. El playground
-interpretará inmediatamente el código, únicamente el código que se
-encuentra desde el inicio hasta el punto donde se encuentre dicho botón,
-y el resultado se mostrará en el panel derecho.</p>
-</div>
-<div class="paragraph">
-<p>Por defecto, playground incluye dos líneas de código y el contenido de
-la variable str aparecerá en el panel de la derecha.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-swift" data-lang="swift">import UIKit
-
-var greeting = "Hello, playground"</code></pre>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_anterior_inicio_siguiente"><a href="diu.html">Anterior</a> | <a href="index.html">Inicio</a> | <a href="variables.html">Siguiente</a></h4>
-
+<pre class="highlight"><code class="language-swift" data-lang="swift">func hasAnyMatches(list: [Int], condition: (Int) -&gt; Bool) -&gt; Bool {
+    for item in list {
+        if condition(item) {
+            return true
+        }
+    }
+    return false
+}
+func lessThanTen(number: Int) -&gt; Bool {
+    return number &lt; 10
+}
+var numbers = [20, 19, 7, 12]
+let b = hasAnyMatches(list: numbers, condition: lessThanTen)
+print(b)</code></pre>
 </div>
 </div>
 </div>
@@ -733,7 +649,7 @@ var greeting = "Hello, playground"</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-01-19 18:35:15 -0600
+Last updated 2024-01-19 14:02:44 -0600
 </div>
 </div>
 </body>
